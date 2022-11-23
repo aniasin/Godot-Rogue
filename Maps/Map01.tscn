@@ -14,3 +14,8 @@ script = ExtResource( 4 )
 
 [node name="Station" parent="." instance=ExtResource( 3 )]
 position = Vector2( -13, -1462 )
+
+[node name="TimerDrag_n_drop" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="TimerDrag_n_drop" to="." method="_on_TimerDrag_n_drop_timeout"]

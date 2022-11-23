@@ -1,8 +1,8 @@
 extends NinePatchRect
 
 
-func populate_shop(inventory):
-	for item  in inventory:
-		var rect = TextureRect.new()
-		rect.texture = load(item)
-		$ScrollContainer/GridContainer.add_child(rect)
+func populate_shop(items):
+	for item  in items:
+		var slot = load("res://UI/Station/InventorySlot.tscn").instance()
+		slot.texture = load(item.inventory_texture_path)
+		$ScrollContainer/GridContainer.add_child(slot)

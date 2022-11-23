@@ -8,7 +8,6 @@ radius = 366.083
 
 [node name="Station" type="Area2D"]
 script = ExtResource( 2 )
-inventory = PoolStringArray( "res://Assets/ships/engine.png", "res://Assets/ships/gun_heavy.png", "res://Assets/ships/HeavyBase.png", "res://Assets/ships/thruster.png" )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

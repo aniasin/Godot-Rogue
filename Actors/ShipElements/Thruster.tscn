@@ -9,6 +9,7 @@ extents = Vector2( 10, 23 )
 [node name="Thruster" type="Area2D"]
 script = ExtResource( 2 )
 hit_points = 400
+inventory_texture_path = "res://UI/Station/Assets/InventoryItems/thruster.png"
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

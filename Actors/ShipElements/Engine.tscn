@@ -7,7 +7,7 @@
 
 [node name="Engine" type="Area2D"]
 script = ExtResource( 2 )
-inventory_texture_path = "res://Assets/ships/engine.png"
+inventory_texture_path = "res://UI/Station/Assets/InventoryItems/engine.png"
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

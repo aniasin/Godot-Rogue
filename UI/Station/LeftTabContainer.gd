@@ -1,5 +1,6 @@
 extends TabContainer
 
 
-func initialize(station):
-	$Shop/InventoryWin.populate_shop(station.inventory)
+func initialize(items):
+	$Shop/InventoryWin.populate_shop(items)
+	$Garage/InventoryWin.populate_shop(items)
