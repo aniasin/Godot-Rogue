@@ -11,6 +11,8 @@ config_version=4
 [application]
 
 config/name="Rogue"
+config/description="Rogue-Like game.
+Fight your way through hasardous space. Loot parts and enhance your ship."
 run/main_scene="res://Maps/Map01.tscn"
 config/icon="res://icon.png"
 

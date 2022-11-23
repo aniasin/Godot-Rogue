@@ -19,11 +19,13 @@ func toggle_inventory(container):
 	else:
 		var Inventory = load("res://UI/Station/InventoryWin.tscn")
 		inventory_ui = Inventory.instance()
-		
-		var items_data = []
-		for item in items:
-			var data = GameInstance.ship_elements[item]
-			items_data.append(data)
-		inventory_ui.populate(items_data)
+		inventory_ui.populate(get_items_data())
 		container.add_child(inventory_ui)
 
+
+func get_items_data():
+	var items_data = []
+	for item in items:
+		var data = GameInstance.ship_elements[item]
+		items_data.append(data)
+	return items_data
