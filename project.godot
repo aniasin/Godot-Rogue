@@ -14,6 +14,10 @@ config/name="Rogue"
 run/main_scene="res://Maps/Map01.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GameInstance="*res://GameInstance.gd"
+
 [display]
 
 window/size/width=1920

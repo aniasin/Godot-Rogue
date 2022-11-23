@@ -1,6 +1,6 @@
 extends TextureRect
 
-onready var root_node = get_tree().root.get_child(0)
+onready var root_node = get_tree().root.get_child(1)
 var empty_texture = load("res://UI/Station/Assets/slot.png")
 
 

@@ -4,22 +4,26 @@ onready var background = $ColorRect
 onready var window = $MarginContainer
 onready var tween = $Tween
 
-
 var is_open = false
 var inventory_items = []
 
+
 func initialize(station):
 	$MarginContainer/HBoxContainer/NinePatchRect/LabelTitle.text = station.station_name
-	
-	
+
 	for item in station.inventory:
-		inventory_items.append(load(item).instance())
+		var data = GameInstance.ship_elements[item]		
+		var element = load("res://Actors/ShipElements/ShipElement.tscn").instance()
+		element.data = data
+		inventory_items.append(data)
+	
 	$MarginContainer/HBoxContainer/NinePatchRect/LeftTabContainer.initialize(inventory_items)
+
 
 func _ready():
 	window.hide()
 	open()
-	
+
 
 func open():
 	is_open = true
