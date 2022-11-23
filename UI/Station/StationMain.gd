@@ -12,7 +12,7 @@ func initialize(station):
 	$MarginContainer/HBoxContainer/NinePatchRect/LabelTitle.text = station.station_name
 
 	for item in station.inventory:
-		var data = GameInstance.ship_elements[item]		
+		var data = GameInstance.ship_elements[item]
 		var element = load("res://Actors/ShipElements/ShipElement.tscn").instance()
 		element.data = data
 		inventory_items.append(data)

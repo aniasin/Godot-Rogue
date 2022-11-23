@@ -1,5 +1,6 @@
 extends Node
 
+var current_map
 var ship_elements = {}
 
 

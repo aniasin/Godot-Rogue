@@ -7,6 +7,7 @@ var dragged_texture
 var dragged_slot
 
 func _ready():
+	GameInstance.current_map = self
 	station_pop_up($Station)
 
 

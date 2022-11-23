@@ -10,9 +10,10 @@ font_path = "res://UI/Station/Fonts/ethnocentric rg.otf"
 font_data = SubResource( 4 )
 
 [node name="InventoryWin" type="NinePatchRect"]
-margin_left = 492.0
-margin_right = 980.0
-margin_bottom = 773.0
+margin_left = 50.0
+margin_top = 104.0
+margin_right = 580.0
+margin_bottom = 851.0
 rect_min_size = Vector2( 488, 677 )
 texture = ExtResource( 1 )
 script = ExtResource( 3 )

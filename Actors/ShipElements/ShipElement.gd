@@ -10,10 +10,6 @@ func _ready():
 	$Sprite.texture = load(data["texture"])
 
 
-func enter_station(_station):
-	print("entering station...")
-	
-
 func get_texture():
 	return $Sprite.texture
 

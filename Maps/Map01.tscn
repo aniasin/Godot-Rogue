@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Effects/ParallaxBackground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actors/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Actors/Stations/Station.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Maps/Map01.gd" type="Script" id=4]
-[ext_resource path="res://Actors/ShipElements/ShipElement.tscn" type="PackedScene" id=5]
 
 [node name="Map01" type="Node2D"]
 script = ExtResource( 4 )
@@ -18,8 +17,5 @@ position = Vector2( -13, -1462 )
 
 [node name="TimerDrag_n_drop" type="Timer" parent="."]
 one_shot = true
-
-[node name="ShipElement" parent="." instance=ExtResource( 5 )]
-position = Vector2( -386, -889 )
 
 [connection signal="timeout" from="TimerDrag_n_drop" to="." method="_on_TimerDrag_n_drop_timeout"]
