@@ -41,7 +41,10 @@ func stop_dragging():
 
 func swap(slot_data):
 	slot_data["slot"].texture = dragged_slot_data["texture"]
+	slot_data["slot"].item_data = dragged_slot_data["item_data"]
 	dragged_slot.texture = slot_data["texture"]
+	dragged_slot.item_data = slot_data["item_data"]
+	
 	stop_dragging()
 
 

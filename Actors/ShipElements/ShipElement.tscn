@@ -6,7 +6,6 @@
 
 [node name="ShipElement" type="Area2D"]
 script = ExtResource( 1 )
-element = "Engine"
 
 [node name="Sprite" type="Sprite" parent="."]
 
