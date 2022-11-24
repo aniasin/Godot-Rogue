@@ -2,6 +2,7 @@ extends Node
 
 onready var root_node = GameInstance.current_map
 
+var money = 125
 var items = ["Engine", "Gun"]
 var inventory_ui = null
 
@@ -11,6 +12,15 @@ func add_item(item_name):
 
 func remove_item(item_name):
 	items.erase(item_name)
+
+
+func inc_money(value):
+	money += value
+
+
+func get_money():
+	return money
+
 
 func toggle_inventory(container):
 	if inventory_ui:

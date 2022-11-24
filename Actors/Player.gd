@@ -21,4 +21,4 @@ func equip_ship(ship):
 
 
 func get_inventory():
-	return $InventoryComponent.get_items_data()
+	return $InventoryComponent

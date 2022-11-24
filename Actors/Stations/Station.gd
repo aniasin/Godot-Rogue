@@ -4,7 +4,7 @@ export var station_name = "Station A"
 var station_image = load("res://Assets/Stations/station.png")
 
 var inventory = [
-	"Engine", "Gun"
+	"Engine", "Gun", "Gun", "Engine"
 ]
 
 func _on_Station_area_shape_entered(_area_rid, area, _area_shape_index, _local_shape_index):
