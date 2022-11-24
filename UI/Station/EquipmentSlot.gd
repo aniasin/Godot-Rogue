@@ -40,10 +40,16 @@ func drop_data(_pos, slot_data):
 	if slot_data["name"] in slots_forbiden:
 		root_node.cancel_drag()
 		return
-	if parent_window and not parent_window.action(slot_data["slot"], self):
-		root_node.cancel_drag()
-		return
-	if old_texture == empty_texture:
+
+	if old_texture != empty_texture:
+		if parent_window and parent_window != slot_data["slot"].parent_window:
+			root_node.cancel_drag()
+			return
+		root_node.swap({"slot": self, "name": slot_name, "texture": texture, "item_data": slot_data["item_data"]})
+	else:
+		if parent_window and not parent_window.action(slot_data["slot"], self):
+			root_node.cancel_drag()
+			return
 		texture = slot_data["texture"]
 		item_data = slot_data["item_data"]
 		slot_name = slot_data["name"]
@@ -51,11 +57,6 @@ func drop_data(_pos, slot_data):
 		slot_data["slot"].slot_name = "none"
 		slot_data["slot"].item_data = null
 		root_node.stop_dragging()
-	else:
-		if parent_window and parent_window != slot_data["slot"].parent_window:
-			root_node.cancel_drag()
-			return
-		root_node.swap({"slot": self, "name": slot_name, "texture": texture, "item_data": slot_data["item_data"]})
 	if is_equipable:
 		GameInstance.current_ship.unequip_slot(slot_data["slot"].slot_id)
 		GameInstance.current_ship.equip_slot(slot_id, item_data)
