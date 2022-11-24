@@ -1,6 +1,7 @@
 [
   {
     "name": "Engine",
+    "slot_name": "PositionEngine",
     "texture": "res://Assets/ships/engine.png",
     "icon": "res://UI/Station/Assets/InventoryItems/engine.png",
     "hp": 50,
@@ -9,6 +10,7 @@
   },
   {
     "name": "Gun",
+    "slot_name": "PositionGun",
     "texture": "res://Assets/ships/gun.png",
     "icon": "res://UI/Station/Assets/InventoryItems/gun.png",
     "hp": 50,
