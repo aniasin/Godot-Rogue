@@ -1,6 +1,6 @@
 extends Node2D
 
-var station_open = false
+var station_open = null
 var dragged_slot
 var dragged_slot_data
 
@@ -15,7 +15,7 @@ func station_pop_up(station):
 		var station_menu = StationMenu.instance()
 		station_menu.initialize(station)
 		add_child(station_menu)
-		station_open = true
+		station_open = station_menu
 
 
 func _input(event):

@@ -31,7 +31,7 @@ func get_drag_data(_pos):
 	return {"slot": self, "name": slot_name, "texture": draged_preview.texture, "item_data": item_data}
 
 
-func can_drop_data(_pos, slot_data):
+func can_drop_data(_pos, _slot_data):
 	return true
 
 
@@ -40,7 +40,6 @@ func drop_data(_pos, slot_data):
 	if slot_data["name"] in slots_forbiden:
 		root_node.cancel_drag()
 		return
-
 	if old_texture != empty_texture:
 		if parent_window and parent_window != slot_data["slot"].parent_window:
 			root_node.cancel_drag()

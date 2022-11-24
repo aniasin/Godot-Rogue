@@ -1,7 +1,6 @@
 extends NinePatchRect
 
 var inventory_size = 10
-var items = []
 
 
 func populate(items_data):
@@ -27,4 +26,3 @@ func action(item_in, item_out):
 		GameInstance.player.get_inventory().inc_money(- item_in.item_data["price"])
 		print(GameInstance.player.get_inventory().get_money())
 		return true
-

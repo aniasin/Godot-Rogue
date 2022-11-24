@@ -42,6 +42,7 @@ func close():
 
 func _on_ButtonQuit_pressed():
 	window.hide()
+	GameInstance.current_map.station_open = null
 	close()
 
 

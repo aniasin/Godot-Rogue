@@ -8,7 +8,7 @@ func populate(items_data):
 		slot.parent_window = self
 		$ScrollContainer/GridContainer.add_child(slot)
 		
-	for i in range (0, 20):
+	for _i in range (0, 20):
 		var slot = load("res://UI/Station/InventorySlot.tscn").instance()
 		slot.parent_window = self
 		$ScrollContainer/GridContainer.add_child(slot)
