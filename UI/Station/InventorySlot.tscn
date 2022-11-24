@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://InventorySlot.gd" type="Script" id=1]
+[ext_resource path="res://UI/Station/EquipmentSlot.gd" type="Script" id=1]
 [ext_resource path="res://UI/Station/Assets/slot.png" type="Texture" id=2]
 
 [node name="InventorySlot" type="TextureRect"]

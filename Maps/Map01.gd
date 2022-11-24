@@ -1,10 +1,8 @@
 extends Node2D
 
-onready var timer = $TimerDrag_n_drop
-
 var station_open = false
-var dragged_texture
 var dragged_slot
+var dragged_slot_data
 
 func _ready():
 	GameInstance.current_map = self
@@ -22,27 +20,37 @@ func station_pop_up(station):
 
 func _input(event):
 	if event.is_action_released("left click"):
-		if dragged_texture:
-			timer.start(0.1)
+		if dragged_slot:
+			var timer = Timer.new()
+			timer.set_one_shot(true)
+			timer.set_wait_time(0.2)
+			timer.autostart = true
+			timer.connect("timeout", self, "_timer_drop_callback", [timer])
+			add_child(timer)
 
 
-func start_dragging(slot, texture):
-	dragged_slot = slot
-	dragged_texture = texture
+func start_dragging(slot_data):
+	dragged_slot = slot_data["slot"]
+	dragged_slot_data = slot_data
 
 
 func stop_dragging():
-	dragged_texture = null
+	dragged_slot_data = null
 	dragged_slot = null
 
 
-func swap(slot, texture):
-	slot.texture = dragged_texture
-	dragged_slot.texture = texture
+func swap(slot_data):
+	slot_data["slot"].texture = dragged_slot_data["texture"]
+	dragged_slot.texture = slot_data["texture"]
 	stop_dragging()
 
 
-func _on_TimerDrag_n_drop_timeout():
-	if dragged_texture:
-		dragged_slot.texture = dragged_texture
+func cancel_drag():
+	if dragged_slot:
+		dragged_slot.texture = dragged_slot_data["texture"]
 		stop_dragging()
+
+
+func _timer_drop_callback(timer):
+	cancel_drag()
+	timer.queue_free()
