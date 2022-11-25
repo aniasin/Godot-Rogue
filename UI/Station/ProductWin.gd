@@ -19,6 +19,7 @@ func action(item_in, item_out):
 		return false
 	else:
 		GameInstance.player.get_inventory().inc_money(item_in.item_data["price"] / 2)
-		print(GameInstance.player.get_inventory().get_money())
+		GameInstance.player.get_inventory().remove_item(item_in.item_data["name"])
+		item_in.parent_window.update_money()
 		return true
 

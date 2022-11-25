@@ -7,20 +7,22 @@
 font_path = "res://UI/Station/Fonts/ethnocentric rg.otf"
 
 [sub_resource type="DynamicFont" id=3]
+size = 32
 font_data = SubResource( 4 )
 
 [node name="ShipHeavyWin" type="NinePatchRect"]
-margin_left = 492.0
-margin_right = 980.0
-margin_bottom = 773.0
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 552.0
+margin_bottom = 837.0
 rect_min_size = Vector2( 488, 677 )
 texture = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 133.0
-margin_top = 75.0
-margin_right = 263.0
-margin_bottom = 96.0
+margin_left = 184.0
+margin_top = 32.0
+margin_right = 314.0
+margin_bottom = 72.0
 custom_fonts/font = SubResource( 3 )
 text = "Ship"
 

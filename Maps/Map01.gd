@@ -2,7 +2,7 @@ extends Node2D
 
 var station_open = null
 var dragged_slot
-var dragged_slot_data
+
 
 func _ready():
 	GameInstance.current_map = self
@@ -29,28 +29,27 @@ func _input(event):
 			add_child(timer)
 
 
-func start_dragging(slot_data):
-	dragged_slot = slot_data["slot"]
-	dragged_slot_data = slot_data
+func start_dragging(slot):
+	dragged_slot = slot
 
 
 func stop_dragging():
-	dragged_slot_data = null
 	dragged_slot = null
 
 
-func swap(slot_data):
-	slot_data["slot"].texture = dragged_slot_data["texture"]
-	slot_data["slot"].item_data = dragged_slot_data["item_data"]
-	dragged_slot.texture = slot_data["texture"]
-	dragged_slot.item_data = slot_data["item_data"]
-	
+func swap(slot):
+	var dragged_texture = slot.texture
+	var dragged_data = slot.item_data
+	slot.texture = load(dragged_slot.item_data["icon"])
+	slot.item_data = dragged_slot.item_data
+	dragged_slot.texture = dragged_texture
+	dragged_slot.item_data = dragged_data
 	stop_dragging()
 
 
 func cancel_drag():
 	if dragged_slot:
-		dragged_slot.texture = dragged_slot_data["texture"]
+		dragged_slot.texture = load(dragged_slot.item_data["icon"])
 		stop_dragging()
 
 

@@ -23,12 +23,10 @@ func get_drag_data(_pos):
 
 	var draged_preview = TextureRect.new()
 	draged_preview.texture = texture
-	root_node.start_dragging({"slot": self, "name": slot_name, "texture": draged_preview.texture, 
-								"item_data": item_data})
+	root_node.start_dragging(self)
 	set_drag_preview(draged_preview)
 	texture = empty_texture
-	# Return texture  and slot_name as drag data.
-	return {"slot": self, "name": slot_name, "texture": draged_preview.texture, "item_data": item_data}
+	return {"slot": self, "texture": draged_preview.texture}
 
 
 func can_drop_data(_pos, _slot_data):
@@ -37,26 +35,36 @@ func can_drop_data(_pos, _slot_data):
 
 func drop_data(_pos, slot_data):
 	var old_texture = texture
-	if slot_data["name"] in slots_forbiden:
+	var other_slot = slot_data["slot"]
+	if other_slot.item_data["type"] in slots_forbiden:
 		root_node.cancel_drag()
 		return
 	if old_texture != empty_texture:
-		if parent_window and parent_window != slot_data["slot"].parent_window:
+		if parent_window and other_slot.parent_window and parent_window != other_slot.parent_window:
 			root_node.cancel_drag()
 			return
-		root_node.swap({"slot": self, "name": slot_name, "texture": texture, "item_data": slot_data["item_data"]})
+		root_node.swap(self)
 	else:
-		if parent_window and not parent_window.action(slot_data["slot"], self):
+		if parent_window and other_slot.parent_window and not parent_window.action(other_slot, self):
 			root_node.cancel_drag()
 			return
 		texture = slot_data["texture"]
-		item_data = slot_data["item_data"]
-		slot_name = slot_data["name"]
-		slot_data["slot"].texture = empty_texture
-		slot_data["slot"].slot_name = "none"
-		slot_data["slot"].item_data = null
+		item_data = other_slot.item_data
+		slot_name = other_slot.item_data["type"]
+		other_slot.texture = empty_texture
+		other_slot.slot_name = "none"
+		other_slot.item_data = null
 		root_node.stop_dragging()
 	if is_equipable:
-		GameInstance.current_ship.unequip_slot(slot_data["slot"].slot_id)
 		GameInstance.current_ship.equip_slot(slot_id, item_data)
 
+
+
+func _on_InventorySlot_mouse_entered():
+	if item_data:
+		$ToolTip/Label.text = item_data["name"] + "\n" + "price:" + str(item_data["price"])
+		$ToolTip.show()
+
+
+func _on_InventorySlot_mouse_exited():
+	$ToolTip.hide()

@@ -4,6 +4,7 @@ var inventory_size = 10
 
 
 func populate(items_data):
+	update_money()
 	for item  in items_data:
 		var slot = load("res://UI/Station/InventorySlot.tscn").instance()
 		slot.item_data = item
@@ -24,5 +25,10 @@ func action(item_in, item_out):
 		return false
 	else:
 		GameInstance.player.get_inventory().inc_money(- item_in.item_data["price"])
-		print(GameInstance.player.get_inventory().get_money())
+		GameInstance.player.get_inventory().add_item(item_in.item_data["name"])
+		update_money()
 		return true
+
+
+func update_money():
+	$LabelMoney.text = str(GameInstance.player.get_inventory().get_money())

@@ -6,7 +6,7 @@ $Engine1, $Engine2, $Engine3, $ThrustLeft1, $ThrustLeft2, $ThrustRight1, $Thrust
 var ui_window_path = "res://UI/Station/ShipHeavyWin.tscn"
 
 
-func equip_slot(slot_id, item_data):
+func equip_slot(slot_id, item_data):	
 	unequip_slot(slot_id)
 	GameInstance.player.get_inventory().remove_item(item_data["name"])
 	var item = load("res://Actors/ShipElements/ShipElement.tscn").instance()
@@ -15,7 +15,7 @@ func equip_slot(slot_id, item_data):
 	
 
 func unequip_slot(slot_id):
-	if  slots[slot_id] and slots[slot_id].get_child(0):
+	if slots[slot_id] and slots[slot_id].get_child_count() > 0:
 		GameInstance.player.get_inventory().add_item(slots[slot_id].get_child(0).data["name"])
 		slots[slot_id].get_child(0).queue_free()
 
