@@ -1,19 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://UI/Station/EquipmentSlot.gd" type="Script" id=1]
 [ext_resource path="res://UI/Station/Assets/slot.png" type="Texture" id=2]
-[ext_resource path="res://UI/Station/ToolTip.tscn" type="PackedScene" id=3]
 
 [node name="InventorySlot" type="TextureRect"]
 margin_right = 94.0
 margin_bottom = 79.0
 texture = ExtResource( 2 )
 script = ExtResource( 1 )
-
-[node name="ToolTip" parent="." instance=ExtResource( 3 )]
-visible = false
-margin_right = 97.0
-margin_bottom = 79.0
 
 [connection signal="mouse_entered" from="." to="." method="_on_InventorySlot_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_InventorySlot_mouse_exited"]

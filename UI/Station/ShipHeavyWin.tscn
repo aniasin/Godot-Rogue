@@ -26,7 +26,15 @@ margin_bottom = 72.0
 custom_fonts/font = SubResource( 3 )
 text = "Ship"
 
-[node name="InventorySlot" parent="." instance=ExtResource( 1 )]
+[node name="Container" type="Container" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Container2" type="Container" parent="Container"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="InventorySlot" parent="Container/Container2" instance=ExtResource( 1 )]
 margin_left = 5.0
 margin_top = 396.0
 margin_right = 99.0
@@ -35,7 +43,7 @@ slot_id = 10
 slots_forbiden = PoolStringArray( "ENGINE" )
 is_equipable = true
 
-[node name="InventorySlot2" parent="." instance=ExtResource( 1 )]
+[node name="InventorySlot2" parent="Container/Container2" instance=ExtResource( 1 )]
 margin_left = 6.0
 margin_top = 553.0
 margin_right = 100.0
@@ -44,7 +52,7 @@ slot_id = 11
 slots_forbiden = PoolStringArray( "GUN" )
 is_equipable = true
 
-[node name="InventorySlot3" parent="." instance=ExtResource( 1 )]
+[node name="InventorySlot3" parent="Container/Container2" instance=ExtResource( 1 )]
 margin_left = 100.0
 margin_top = 325.0
 margin_right = 194.0
@@ -53,7 +61,7 @@ slot_id = 1
 slots_forbiden = PoolStringArray( "ENGINE" )
 is_equipable = true
 
-[node name="InventorySlot4" parent="." instance=ExtResource( 1 )]
+[node name="InventorySlot4" parent="Container/Container2" instance=ExtResource( 1 )]
 margin_left = 198.0
 margin_top = 297.0
 margin_right = 292.0
@@ -62,7 +70,7 @@ slot_id = 2
 slots_forbiden = PoolStringArray( "ENGINE" )
 is_equipable = true
 
-[node name="InventorySlot5" parent="." instance=ExtResource( 1 )]
+[node name="InventorySlot5" parent="Container/Container2" instance=ExtResource( 1 )]
 margin_left = 297.0
 margin_top = 326.0
 margin_right = 391.0
@@ -71,7 +79,7 @@ slot_id = 3
 slots_forbiden = PoolStringArray( "ENGINE" )
 is_equipable = true
 
-[node name="InventorySlot6" parent="." instance=ExtResource( 1 )]
+[node name="InventorySlot6" parent="Container/Container2" instance=ExtResource( 1 )]
 margin_left = 378.0
 margin_top = 403.0
 margin_right = 472.0
@@ -80,7 +88,7 @@ slot_id = 12
 slots_forbiden = PoolStringArray( "ENGINE" )
 is_equipable = true
 
-[node name="InventorySlot7" parent="." instance=ExtResource( 1 )]
+[node name="InventorySlot7" parent="Container/Container2" instance=ExtResource( 1 )]
 margin_left = 383.0
 margin_top = 547.0
 margin_right = 477.0
@@ -89,7 +97,7 @@ slot_id = 13
 slots_forbiden = PoolStringArray( "GUN" )
 is_equipable = true
 
-[node name="InventorySlot8" parent="." instance=ExtResource( 1 )]
+[node name="InventorySlot8" parent="Container/Container2" instance=ExtResource( 1 )]
 margin_left = 188.0
 margin_top = 407.0
 margin_right = 282.0
@@ -98,7 +106,7 @@ slot_id = 4
 slots_forbiden = PoolStringArray( "ENGINE", "GUN" )
 is_equipable = true
 
-[node name="InventorySlot9" parent="." instance=ExtResource( 1 )]
+[node name="InventorySlot9" parent="Container/Container2" instance=ExtResource( 1 )]
 margin_left = 107.0
 margin_top = 488.0
 margin_right = 201.0
@@ -107,7 +115,7 @@ slot_id = 5
 slots_forbiden = PoolStringArray( "ENGINE", "GUN" )
 is_equipable = true
 
-[node name="InventorySlot10" parent="." instance=ExtResource( 1 )]
+[node name="InventorySlot10" parent="Container/Container2" instance=ExtResource( 1 )]
 margin_left = 267.0
 margin_top = 482.0
 margin_right = 361.0
@@ -116,7 +124,7 @@ slot_id = 6
 slots_forbiden = PoolStringArray( "ENGINE", "GUN" )
 is_equipable = true
 
-[node name="InventorySlot11" parent="." instance=ExtResource( 1 )]
+[node name="InventorySlot11" parent="Container/Container2" instance=ExtResource( 1 )]
 margin_left = 100.0
 margin_top = 619.0
 margin_right = 194.0
@@ -125,7 +133,7 @@ slot_id = 7
 slots_forbiden = PoolStringArray( "GUN", "UTILITY" )
 is_equipable = true
 
-[node name="InventorySlot12" parent="." instance=ExtResource( 1 )]
+[node name="InventorySlot12" parent="Container/Container2" instance=ExtResource( 1 )]
 margin_left = 197.0
 margin_top = 619.0
 margin_right = 291.0
@@ -134,7 +142,7 @@ slot_id = 8
 slots_forbiden = PoolStringArray( "GUN", "UTILITY" )
 is_equipable = true
 
-[node name="InventorySlot13" parent="." instance=ExtResource( 1 )]
+[node name="InventorySlot13" parent="Container/Container2" instance=ExtResource( 1 )]
 margin_left = 294.0
 margin_top = 617.0
 margin_right = 388.0

@@ -5,6 +5,7 @@ export (int) var slot_id = 0
 export (PoolStringArray) var slots_forbiden
 export (bool) var is_equipable = false
 
+var tooltip
 var parent_window
 var slot_name = "none"
 var item_data
@@ -30,7 +31,7 @@ func get_drag_data(_pos):
 
 
 func can_drop_data(_pos, _slot_data):
-	return true
+	return slot_id != null
 
 
 func drop_data(_pos, slot_data):
@@ -62,9 +63,15 @@ func drop_data(_pos, slot_data):
 
 func _on_InventorySlot_mouse_entered():
 	if item_data:
-		$ToolTip/Label.text = item_data["name"] + "\n" + "price:" + str(item_data["price"])
-		$ToolTip.show()
+		var Tooltip = load("res://UI/Station/ToolTip.tscn")
+		tooltip = Tooltip.instance()
+		tooltip.set_text(item_data)
+		get_parent().get_parent().get_parent().add_child(tooltip)
+		tooltip.rect_position = get_parent().get_parent().get_parent().get_local_mouse_position()
 
 
 func _on_InventorySlot_mouse_exited():
-	$ToolTip.hide()
+	if tooltip:
+		tooltip.hide()
+		tooltip.queue_free()
+		tooltip = null

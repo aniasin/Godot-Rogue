@@ -26,6 +26,9 @@ margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="ProductWin" parent="Shop" instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 488.0
 margin_bottom = 766.0
 
 [node name="InventoryWin" parent="Shop" instance=ExtResource( 3 )]
