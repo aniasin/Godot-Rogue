@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Actors/ShipElements/ShipHeavy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actors/MovementComp.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Actors/Player.gd" type="Script" id=3]
+[ext_resource path="res://Hud/hud_left.png" type="Texture" id=4]
 [ext_resource path="res://Actors/InventoryComponent.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Hud/hudright.png" type="Texture" id=6]
+[ext_resource path="res://UI/Station/Fonts/ethnocentric rg.otf" type="DynamicFontData" id=7]
+[ext_resource path="res://Actors/hud.gd" type="Script" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 7 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 3 )
@@ -11,10 +18,44 @@ script = ExtResource( 3 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="Hud" type="NinePatchRect" parent="Camera2D/CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1920.0
+margin_bottom = -1080.0
+script = ExtResource( 8 )
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/CanvasLayer/Hud"]
+margin_top = 848.0
+margin_right = 289.0
+margin_bottom = 1082.0
+texture = ExtResource( 4 )
+
+[node name="TextureRect2" type="TextureRect" parent="Camera2D/CanvasLayer/Hud"]
+margin_left = 1632.0
+margin_top = 848.0
+margin_right = 1921.0
+margin_bottom = 1082.0
+texture = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Camera2D/CanvasLayer/Hud"]
+margin_left = 48.0
+margin_top = 896.0
+margin_right = 96.0
+margin_bottom = 920.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "999"
+
 [node name="MovementComp" parent="." instance=ExtResource( 2 )]
 
 [node name="InventoryComponent" parent="." instance=ExtResource( 5 )]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
 [node name="ShipHeavy" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 256 )
+
+[node name="Interface" type="CanvasLayer" parent="."]
+
+[node name="Tween" type="Tween" parent="Interface"]

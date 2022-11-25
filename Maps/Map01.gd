@@ -15,7 +15,13 @@ func station_pop_up(station):
 		var station_menu = StationMenu.instance()
 		station_menu.initialize(station)
 		add_child(station_menu)
-		station_open = station_menu
+		station_open = station
+		station_menu.connect("station_quit", self, "_on_station_quit")
+
+
+func _on_station_quit():
+	station_open.activate_collision()
+	station_open = null
 
 
 func _input(event):

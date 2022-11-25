@@ -4,6 +4,8 @@ onready var background = $ColorRect
 onready var window = $MarginContainer
 onready var tween = $Tween
 
+signal station_quit
+
 var is_open = false
 var inventory_items = []
 
@@ -42,7 +44,7 @@ func close():
 
 func _on_ButtonQuit_pressed():
 	window.hide()
-	GameInstance.current_map.station_open = null
+	emit_signal("station_quit")
 	close()
 
 

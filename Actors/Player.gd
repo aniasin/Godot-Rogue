@@ -8,7 +8,7 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("inventory"):
-		$InventoryComponent.toggle_inventory($CanvasLayer)
+		$InventoryComponent.toggle_inventory($Interface)
 
 
 func _physics_process(_delta):

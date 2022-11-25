@@ -4,6 +4,8 @@
     "texture": "res://Assets/ships/engine.png",
     "icon": "res://UI/Station/Assets/InventoryItems/engine.png",
     "hp": 50,
+	"power": 100,
+	"consumption": 20,
     "price": 125,
     "type": "ENGINE"
   },
@@ -12,6 +14,8 @@
     "texture": "res://Assets/ships/gun.png",
     "icon": "res://UI/Station/Assets/InventoryItems/gun.png",
     "hp": 50,
+	"power": 20,
+	"consumption": 20,
     "price": 125,
     "type": "GUN"
   }

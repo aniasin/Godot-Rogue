@@ -7,8 +7,29 @@ var inventory = [
 	"Engine", "Gun", "Gun", "Engine"
 ]
 
+
+func _ready():
+	$SpriteLight.modulate = Color8(51, 255, 51)
+
+
 func _on_Station_area_shape_entered(_area_rid, area, _area_shape_index, _local_shape_index):
 	if area.has_method("enter_station"):
 		$CollisionShape2D.set_deferred("disabled", true)
 		area.enter_station(self)
 		get_parent().station_pop_up(self)
+		$SpriteLight.modulate = Color8(255, 0, 0)
+
+
+func activate_collision():
+	var timer = Timer.new()
+	timer.set_one_shot(true)
+	timer.set_wait_time(10)
+	timer.autostart = true
+	timer.connect("timeout", self, "_timer_reopen_callback", [timer])
+	add_child(timer)
+
+
+func _timer_reopen_callback(timer):
+	$CollisionShape2D.disabled = false
+	$SpriteLight.modulate = Color8(51, 255, 51)
+	timer.queue_free()

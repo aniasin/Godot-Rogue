@@ -11,10 +11,10 @@ size = 32
 font_data = SubResource( 4 )
 
 [node name="InventoryWin" type="NinePatchRect"]
-margin_left = 64.0
-margin_top = 64.0
-margin_right = 594.0
-margin_bottom = 811.0
+anchor_bottom = 1.0
+margin_left = -500.0
+margin_right = -12.0
+margin_bottom = -304.0
 rect_min_size = Vector2( 488, 677 )
 texture = ExtResource( 1 )
 script = ExtResource( 3 )
@@ -28,18 +28,18 @@ custom_fonts/font = SubResource( 3 )
 text = "Inventory"
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 128.0
-margin_top = 80.0
-margin_right = 303.0
-margin_bottom = 120.0
+margin_left = 52.0
+margin_top = 88.0
+margin_right = 227.0
+margin_bottom = 128.0
 custom_fonts/font = SubResource( 3 )
 text = "Money:"
 
 [node name="LabelMoney" type="Label" parent="."]
-margin_left = 312.0
-margin_top = 80.0
-margin_right = 487.0
-margin_bottom = 120.0
+margin_left = 236.0
+margin_top = 88.0
+margin_right = 434.0
+margin_bottom = 128.0
 custom_fonts/font = SubResource( 3 )
 text = "xxxxxx"
 

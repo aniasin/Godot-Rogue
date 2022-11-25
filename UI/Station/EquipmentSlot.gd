@@ -58,7 +58,10 @@ func drop_data(_pos, slot_data):
 		root_node.stop_dragging()
 	if is_equipable:
 		GameInstance.current_ship.equip_slot(slot_id, item_data)
-
+		if other_slot.is_equipable:
+			GameInstance.current_ship.remove_slot(other_slot.slot_id)
+	if not is_equipable and other_slot.is_equipable:
+		GameInstance.current_ship.unequip_slot(other_slot.slot_id)
 
 
 func _on_InventorySlot_mouse_entered():

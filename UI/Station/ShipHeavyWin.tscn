@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://UI/Station/InventorySlot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/Station/Assets/shipheavy.png" type="Texture" id=2]
+[ext_resource path="res://UI/Station/ShipWindow.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFontData" id=4]
 font_path = "res://UI/Station/Fonts/ethnocentric rg.otf"
@@ -17,6 +18,7 @@ margin_right = 552.0
 margin_bottom = 837.0
 rect_min_size = Vector2( 488, 677 )
 texture = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 184.0
