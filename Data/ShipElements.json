@@ -18,5 +18,15 @@
 	"consumption": 20,
     "price": 125,
     "type": "GUN"
-  }
+  },
+    {
+    "name": "Battery",
+    "texture": "res://Assets/ships/utility.png",
+    "icon": "res://UI/Station/Assets/InventoryItems/utility.png",
+    "hp": 50,
+	"power": 20,
+	"consumption": 0,
+    "price": 225,
+    "type": "UTILITY"
+  },
 ]

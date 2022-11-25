@@ -4,7 +4,7 @@ export var station_name = "Station A"
 var station_image = load("res://Assets/Stations/station.png")
 
 var inventory = [
-	"Engine", "Gun", "Gun", "Engine"
+	"Engine", "Gun", "Gun", "Engine", "Battery"
 ]
 
 
