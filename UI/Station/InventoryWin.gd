@@ -18,14 +18,14 @@ func populate(items_data):
 			$ScrollContainer/GridContainer.add_child(slot)
 
 
-func action(item_in, item_out):
+func sell_buy(item_in, item_out):
 	if item_in.parent_window == item_out.parent_window:
 		return true
 	if GameInstance.player.get_inventory().get_money() < item_in.item_data["price"]:
 		return false
 	else:
 		GameInstance.player.get_inventory().inc_money(- item_in.item_data["price"])
-		GameInstance.player.get_inventory().add_item(item_in.item_data["name"])
+		GameInstance.player.get_inventory().add_item(item_in.item_data)
 		update_money()
 		return true
 

@@ -13,7 +13,7 @@ var engine_consumption = 20
 
 func equip_slot(slot_id, item_data):
 	unequip_slot(slot_id)
-	GameInstance.player.get_inventory().remove_item(item_data["name"])
+	GameInstance.player.get_inventory().remove_item(item_data)
 	var item = load("res://Actors/ShipElements/ShipElement.tscn").instance()
 	item.element = item_data["name"]
 	slots[slot_id].add_child(item)
@@ -23,7 +23,7 @@ func equip_slot(slot_id, item_data):
 
 func unequip_slot(slot_id):
 	if equipped_slots.has(slot_id) and equipped_slots[slot_id]:
-		GameInstance.player.get_inventory().add_item(slots[slot_id].get_child(0).data["name"])
+		GameInstance.player.get_inventory().add_item(slots[slot_id].get_child(0).data)
 		print("unequiped item !")
 		remove_slot(slot_id)
 
@@ -39,12 +39,11 @@ func update_ship():
 	engine_power = 20
 	engine_consumption = 20
 	for key in equipped_slots.keys():
-		if GameInstance.ship_elements[equipped_slots[key]["name"]]:
-			var element_data = GameInstance.ship_elements[equipped_slots[key]["name"]]
-			var type = element_data["type"]
+		if equipped_slots[key]:
+			var type = equipped_slots[key]["type"]
 			if type == "ENGINE":
-				engine_power += element_data["power"]
-			engine_consumption += element_data["consumption"]
+				engine_power += equipped_slots[key]["power"]
+			engine_consumption += equipped_slots[key]["consumption"]
 
 
 func enter_station(station):

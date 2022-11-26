@@ -14,7 +14,7 @@ func populate(items_data):
 		$ScrollContainer/GridContainer.add_child(slot)
 
 
-func action(item_in, item_out):
+func sell_buy(item_in, item_out):
 	if item_in.parent_window == item_out.parent_window:
 		return false
 	else:

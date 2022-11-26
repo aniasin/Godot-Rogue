@@ -41,21 +41,18 @@ func drop_data(_pos, slot_data):
 		root_node.cancel_drag()
 		return
 	if old_texture != empty_texture:
-		if parent_window and other_slot.parent_window and parent_window != other_slot.parent_window:
-			root_node.cancel_drag()
-			return
-		root_node.swap(self)
-	else:
-		if parent_window and other_slot.parent_window and not parent_window.action(other_slot, self):
-			root_node.cancel_drag()
-			return
-		texture = slot_data["texture"]
-		item_data = other_slot.item_data
-		slot_name = other_slot.item_data["type"]
-		other_slot.texture = empty_texture
-		other_slot.slot_name = "none"
-		other_slot.item_data = null
-		root_node.stop_dragging()
+		root_node.cancel_drag()
+		return
+	if parent_window and other_slot.parent_window and not parent_window.sell_buy(other_slot, self):
+		root_node.cancel_drag()
+		return
+	texture = slot_data["texture"]
+	item_data = other_slot.item_data
+	slot_name = other_slot.item_data["type"]
+	other_slot.texture = empty_texture
+	other_slot.slot_name = "none"
+	other_slot.item_data = null
+	root_node.stop_dragging()
 	if is_equipable:
 		GameInstance.current_ship.equip_slot(slot_id, item_data)
 		if other_slot.is_equipable:
@@ -69,8 +66,10 @@ func _on_InventorySlot_mouse_entered():
 		var Tooltip = load("res://UI/Station/ToolTip.tscn")
 		tooltip = Tooltip.instance()
 		tooltip.set_text(item_data)
-		get_parent().get_parent().get_parent().add_child(tooltip)
-		tooltip.rect_position = get_parent().get_parent().get_parent().get_local_mouse_position()
+		#TODO clean this shit
+		var owning_window = get_parent().get_parent().get_parent().get_parent().get_parent().get_parent()
+		owning_window.add_child(tooltip)
+		tooltip.rect_position = owning_window.get_local_mouse_position()
 
 
 func _on_InventorySlot_mouse_exited():
