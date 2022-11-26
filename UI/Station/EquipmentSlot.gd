@@ -54,7 +54,9 @@ func drop_data(_pos, slot_data):
 			parent_window.update_ship_stats()
 		
 	if not is_equipable and other_slot.is_equipable:
-		GameInstance.current_ship.unequip_slot(other_slot.slot_id)
+		if not GameInstance.current_ship.unequip_slot(other_slot.slot_id):
+			root_node.cancel_drag()
+			return
 		other_slot.parent_window.update_ship_stats()
 		
 	texture = slot_data["texture"]

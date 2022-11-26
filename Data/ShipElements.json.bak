@@ -5,7 +5,7 @@
     "icon": "res://UI/Station/Assets/InventoryItems/engine.png",
     "hp": 50,
 	"power": 100,
-	"consumption": 20,
+	"consumption": 100,
     "price": 125,
     "type": "ENGINE",
 	"description": "A regular engine."
@@ -26,8 +26,8 @@
     "texture": "res://Assets/ships/utility.png",
     "icon": "res://UI/Station/Assets/InventoryItems/utility.png",
     "hp": 50,
-	"power": 20,
-	"consumption": -20,
+	"power": 0,
+	"consumption": -50,
     "price": 225,
     "type": "UTILITY",
 	"description": "Enhance maximum power."
