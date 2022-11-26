@@ -1,5 +1,10 @@
 extends NinePatchRect
 
+#StationMain sucribe to it
+signal item_bought
+
+var is_commercial = true
+
 var inventory_size = 10
 
 
@@ -27,6 +32,7 @@ func sell_buy(item_in, item_out):
 		GameInstance.player.get_inventory().inc_money(- item_in.item_data["price"])
 		GameInstance.player.get_inventory().add_item(item_in.item_data)
 		update_money()
+		emit_signal("item_bought", [item_in.item_data])
 		return true
 
 

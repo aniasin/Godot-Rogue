@@ -1,5 +1,6 @@
 extends NinePatchRect
 
+var is_commercial = true
 
 func populate(items_data):
 	for item  in items_data:

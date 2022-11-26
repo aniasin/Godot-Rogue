@@ -20,7 +20,7 @@ func initialize(station):
 		var element = load("res://Actors/ShipElements/ShipElement.tscn").instance()
 		element.data = data
 		inventory_items.append(data)	
-	$MarginContainer/HBoxContainer/NinePatchRect/LeftTabContainer.initialize(inventory_items)
+	$MarginContainer/HBoxContainer/NinePatchRect/LeftTabContainer.initialize(inventory_items, station)
 
 
 func _ready():
@@ -55,3 +55,8 @@ func _on_Tween_tween_completed(_object, _key):
 		window.show()
 	else:
 		queue_free()
+
+
+func _on_item_bought(item):
+	owning_station.item_bought(item)
+

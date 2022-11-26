@@ -9,9 +9,12 @@ var equipped_slots = {}
 var weight = 3
 var engine_power = 20
 var engine_consumption = 20
+var max_consumption = 120
 
 
 func equip_slot(slot_id, item_data):
+	if item_data["consumption"] > max_consumption - engine_consumption:
+		return false
 	unequip_slot(slot_id)
 	GameInstance.player.get_inventory().remove_item(item_data)
 	var item = load("res://Actors/ShipElements/ShipElement.tscn").instance()
@@ -19,6 +22,7 @@ func equip_slot(slot_id, item_data):
 	slots[slot_id].add_child(item)
 	equipped_slots[slot_id] = item_data
 	update_ship()
+	return true
 	
 
 func unequip_slot(slot_id):

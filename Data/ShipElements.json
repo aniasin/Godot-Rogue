@@ -7,7 +7,8 @@
 	"power": 100,
 	"consumption": 20,
     "price": 125,
-    "type": "ENGINE"
+    "type": "ENGINE",
+	"description": "A regular engine."
   },
   {
     "name": "Gun",
@@ -17,7 +18,8 @@
 	"power": 20,
 	"consumption": 20,
     "price": 125,
-    "type": "GUN"
+    "type": "GUN",
+	"description": "A regular gun."
   },
     {
     "name": "Battery",
@@ -25,8 +27,9 @@
     "icon": "res://UI/Station/Assets/InventoryItems/utility.png",
     "hp": 50,
 	"power": 20,
-	"consumption": 0,
+	"consumption": -50,
     "price": 225,
-    "type": "UTILITY"
+    "type": "UTILITY",
+	"description": "Enhance maximum power."
   },
 ]

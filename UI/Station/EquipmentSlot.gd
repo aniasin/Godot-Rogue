@@ -7,21 +7,18 @@ export (bool) var is_equipable = false
 
 var tooltip
 var parent_window
-var slot_name = "none"
 var item_data
 var empty_texture = load("res://UI/Station/Assets/slot.png")
 
 
 func _ready():
 	if item_data:
-		slot_name = item_data["type"]
 		texture = load(item_data["icon"])
 
 
 func get_drag_data(_pos):
 	if texture == empty_texture:
 		return null
-
 	var draged_preview = TextureRect.new()
 	draged_preview.texture = texture
 	root_node.start_dragging(self)
@@ -31,7 +28,7 @@ func get_drag_data(_pos):
 
 
 func can_drop_data(_pos, _slot_data):
-	return slot_id != null
+	return true
 
 
 func drop_data(_pos, slot_data):
@@ -43,22 +40,28 @@ func drop_data(_pos, slot_data):
 	if old_texture != empty_texture:
 		root_node.cancel_drag()
 		return
-	if parent_window and other_slot.parent_window and not parent_window.sell_buy(other_slot, self):
+	if parent_window.is_commercial and other_slot.parent_window.is_commercial and not parent_window.sell_buy(other_slot, self):
 		root_node.cancel_drag()
 		return
-	texture = slot_data["texture"]
-	item_data = other_slot.item_data
-	slot_name = other_slot.item_data["type"]
-	other_slot.texture = empty_texture
-	other_slot.slot_name = "none"
-	other_slot.item_data = null
-	root_node.stop_dragging()
+
 	if is_equipable:
-		GameInstance.current_ship.equip_slot(slot_id, item_data)
+		if not GameInstance.current_ship.equip_slot(slot_id, other_slot.item_data):
+			root_node.cancel_drag()
+			return
+		parent_window.update_ship_stats()
 		if other_slot.is_equipable:
 			GameInstance.current_ship.remove_slot(other_slot.slot_id)
+			parent_window.update_ship_stats()
+		
 	if not is_equipable and other_slot.is_equipable:
 		GameInstance.current_ship.unequip_slot(other_slot.slot_id)
+		other_slot.parent_window.update_ship_stats()
+		
+	texture = slot_data["texture"]
+	item_data = other_slot.item_data
+	other_slot.texture = empty_texture
+	other_slot.item_data = null
+	root_node.stop_dragging()
 
 
 func _on_InventorySlot_mouse_entered():

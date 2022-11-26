@@ -12,4 +12,4 @@ func _ready():
 
 func _timer_refresh_callback():
 	$LabelSpeed.text = str(GameInstance.current_ship.engine_power)
-	$LabelPower.text = str(GameInstance.current_ship.engine_consumption)
+	$LabelPower.text = str(GameInstance.current_ship.engine_consumption) + "/" + str(GameInstance.current_ship.max_consumption)

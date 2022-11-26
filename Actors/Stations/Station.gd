@@ -4,7 +4,7 @@ export var station_name = "Station A"
 var station_image = load("res://Assets/Stations/station.png")
 
 var inventory = [
-	"Engine", "Gun", "Gun", "Engine", "Battery"
+	"Engine", "Gun", "Gun", "Engine", "Battery", "Engine", "Gun", "Gun", "Engine", "Battery"
 ]
 
 
@@ -27,6 +27,13 @@ func activate_collision():
 	timer.autostart = true
 	timer.connect("timeout", self, "_timer_reopen_callback", [timer])
 	add_child(timer)
+
+
+func _on_item_bought(item):
+	#StationMain call it through signal emitted in LeftTabContainer
+	if item[0]["name"] in inventory:
+		inventory.erase(item[0]["name"])
+
 
 
 func _timer_reopen_callback(timer):
