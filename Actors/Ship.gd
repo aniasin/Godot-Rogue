@@ -8,11 +8,26 @@ var equipped_slots = {}
 
 var weight = 3
 var engine_power = 20
+var rotation_speed = 1.5
 var engine_consumption = 20
 var max_consumption = 120
 var booster = 0
-var booster_timer
-var booster_replenish_time = 10
+var booster_time = 0
+var max_booster = 200
+
+var is_boosting = false
+var booster_state = 0
+
+
+func _process(delta):
+	if is_boosting:
+		booster_time -= delta
+	else:
+		booster_time = clamp(booster_time + delta, 0, (max_consumption - engine_consumption) / 10)
+	if max_consumption - engine_consumption > 0:
+		booster_state = (booster_time / (max_consumption - engine_consumption)) * 1000
+	else:
+		booster_state = 0
 
 
 func equip_slot(slot_id, item_data):
@@ -59,6 +74,7 @@ func update_ship():
 				engine_consumption += equipped_slots[key]["consumption"]
 			else:
 				max_consumption -= equipped_slots[key]["consumption"]
+	booster_time = (max_consumption - engine_consumption) / 10
 
 
 func enter_station(station):
@@ -66,29 +82,28 @@ func enter_station(station):
 
 
 func start_booster():
-	#TODO Tween
-	if booster >= 0 and max_consumption - engine_consumption > 10:
-		engine_consumption += 1
-		booster = 100
-	else:
-		stop_booster()
+	if booster <= 0 and booster_time >= 1:
+		$TweenBooster.interpolate_property(self, "booster", 
+		0, max_booster, 1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		var timer = Timer.new()
+		timer.set_one_shot(true)
+		timer.set_wait_time(booster_time)
+		timer.autostart = true
+		timer.connect("timeout", self, "_timer_booster_callback", [timer])
+		add_child(timer)
+		$TweenBooster.start()
+		is_boosting = true
 
 
 func stop_booster():
-	#TODO Tween
-	if not booster_timer:
-		booster = -1
-		booster_timer = Timer.new()
-		booster_timer.set_one_shot(true)
-		booster_timer.set_wait_time(booster_replenish_time)
-		booster_timer.autostart = true
-		booster_timer.connect("timeout", self, "_timer_booster_callback")
-		add_child(booster_timer)
+	$TweenBooster.stop_all()
+	$TweenBooster.interpolate_property(self, "booster", 
+	booster, 0, 1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$TweenBooster.start()
+	is_boosting = false
 
 
-func _timer_booster_callback():
-	update_ship()
-	booster = 0
-	booster_timer.queue_free()
-	booster_timer = null
-	print("booster back !")
+func _timer_booster_callback(timer):
+	stop_booster()
+	timer.queue_free()
+

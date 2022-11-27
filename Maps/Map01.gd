@@ -1,16 +1,19 @@
 extends Node2D
 
+var player
 var station_open = null
 var dragged_slot
 
 
 func _ready():
 	GameInstance.current_map = self
+	player = $Player
 	station_pop_up($Station)
 
 
 func station_pop_up(station):
 	if not station_open:
+		player.state = player.STATE.station
 		var StationMenu = load("res://UI/Station/StationMain.tscn")
 		var station_menu = StationMenu.instance()
 		station_menu.initialize(station)
@@ -22,6 +25,7 @@ func station_pop_up(station):
 func _on_station_quit():
 	station_open.activate_collision()
 	station_open = null
+	player.state = player.STATE.default
 
 
 func _input(event):

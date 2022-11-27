@@ -8,7 +8,11 @@ radius = 44.0
 height = 42.0
 
 [node name="ShipHeavy" type="Area2D"]
+rotation = 1.5708
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -94,3 +98,5 @@ position = Vector2( 25, 23 )
 __meta__ = {
 "_edit_group_": true
 }
+
+[node name="TweenBooster" type="Tween" parent="."]
