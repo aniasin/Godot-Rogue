@@ -11,6 +11,13 @@ func _ready():
 
 
 func _timer_refresh_callback():
-	$LabelSpeed.text = str(GameInstance.current_ship.engine_power)
 	$ProgressBarBooster.value = GameInstance.current_ship.booster_state
-	$LabelPower.text = str(GameInstance.current_ship.engine_consumption) + "/" + str(GameInstance.current_ship.max_consumption)
+	
+
+
+func _on_ButtonInventory_pressed():
+	GameInstance.player.toggle_inventory()
+
+
+func _on_ButtonMap_pressed():
+	GameInstance.player.toggle_map()

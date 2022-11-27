@@ -27,42 +27,6 @@ margin_right = 1921.0
 margin_bottom = 1082.0
 texture = ExtResource( 2 )
 
-[node name="Label1" type="Label" parent="."]
-margin_left = 40.0
-margin_top = 920.0
-margin_right = 97.0
-margin_bottom = 944.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 4 )
-text = "Power : "
-
-[node name="LabelSpeed" type="Label" parent="."]
-margin_left = 96.0
-margin_top = 896.0
-margin_right = 144.0
-margin_bottom = 920.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 4 )
-text = "999"
-
-[node name="Label2" type="Label" parent="."]
-margin_left = 40.0
-margin_top = 896.0
-margin_right = 97.0
-margin_bottom = 920.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 4 )
-text = "Speed : "
-
-[node name="LabelPower" type="Label" parent="."]
-margin_left = 96.0
-margin_top = 920.0
-margin_right = 144.0
-margin_bottom = 944.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 4 )
-text = "999"
-
 [node name="ProgressBarBooster" type="TextureProgress" parent="."]
 margin_top = 832.0
 margin_right = 40.0
@@ -71,3 +35,26 @@ rounded = true
 texture_under = ExtResource( 6 )
 texture_progress = ExtResource( 5 )
 fill_mode = 3
+
+[node name="ButtonInventory" type="Button" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 288.0
+margin_top = 1032.0
+margin_right = 434.0
+margin_bottom = 1076.0
+custom_fonts/font = ExtResource( 4 )
+text = "Inventory"
+
+[node name="ButtonMap" type="Button" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 456.0
+margin_top = 1032.0
+margin_right = 602.0
+margin_bottom = 1076.0
+custom_fonts/font = ExtResource( 4 )
+text = "Map"
+
+[connection signal="pressed" from="ButtonInventory" to="." method="_on_ButtonInventory_pressed"]
+[connection signal="pressed" from="ButtonMap" to="." method="_on_ButtonMap_pressed"]

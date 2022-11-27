@@ -18,7 +18,3 @@ func _ready():
 	var data = data_parse.result
 	for item in data:
 		ship_elements[item["name"]] = item
-	print(ship_elements)
-
-
-

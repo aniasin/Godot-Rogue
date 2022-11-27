@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/Station/Assets/panel.png" type="Texture" id=1]
+[ext_resource path="res://UI/Station/Fonts/ethnocentric rg.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://UI/Map.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 2 )
+
+[node name="Map" type="NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2000.0
+margin_top = 72.0
+margin_right = 730.0
+margin_bottom = -376.0
+texture = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 256.0
+margin_top = 24.0
+margin_right = 364.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 1 )
+text = "MAP"
+align = 1

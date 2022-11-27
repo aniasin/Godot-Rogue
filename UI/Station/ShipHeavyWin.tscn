@@ -38,10 +38,10 @@ custom_fonts/font = ExtResource( 4 )
 text = "Power : "
 
 [node name="LabelPower" type="Label" parent="."]
-margin_left = 136.0
+margin_left = 184.0
 margin_top = 88.0
-margin_right = 193.0
-margin_bottom = 107.0
+margin_right = 305.0
+margin_bottom = 126.0
 custom_fonts/font = ExtResource( 4 )
 text = "120/120"
 

@@ -7,6 +7,7 @@ var ship
 enum STATE {default = 0, station=1}
 var state = STATE.default
 
+var map
 
 func _ready():
 	GameInstance.player = self
@@ -34,7 +35,7 @@ func get_input():
 
 func _input(event):
 	if event.is_action_pressed("inventory"):
-		$InventoryComponent.toggle_inventory($Interface)
+		toggle_inventory()
 
 
 func _physics_process(delta):
@@ -50,6 +51,20 @@ func _physics_process(delta):
 func equip_ship(current_ship):
 	GameInstance.current_ship = current_ship
 	ship = current_ship
+
+
+func toggle_inventory():
+	$InventoryComponent.toggle_inventory($Interface)
+
+
+func toggle_map():
+	if not map:
+		map = load("res://UI/Map.tscn").instance()
+		map.tween = $Interface/Tween
+		$Interface.add_child(map)
+	else:
+		map.queue_free()
+		map = null
 
 
 func get_inventory():
