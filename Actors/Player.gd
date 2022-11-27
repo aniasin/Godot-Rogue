@@ -27,6 +27,9 @@ func get_input():
 		velocity = Vector2(ship.engine_power + ship.booster, 0).rotated(rotation)
 	if Input.is_action_pressed("down"):
 		velocity = Vector2(-ship.engine_power, 0).rotated(rotation)
+		
+	if Input.is_action_just_pressed("left click") and state != STATE.station:
+		ship.primary_fire()
 
 
 func _input(event):

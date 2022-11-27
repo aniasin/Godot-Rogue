@@ -1,6 +1,7 @@
 [
   {
     "name": "Engine",
+	"activate": "res://Actors/ShipElements/ElementsAction/PrimaryGun.tscn",
     "texture": "res://Assets/ships/engine.png",
     "icon": "res://UI/Station/Assets/InventoryItems/engine.png",
     "hp": 50,
@@ -12,6 +13,7 @@
   },
   {
     "name": "Gun",
+	"activate": "res://Actors/ShipElements/ElementsAction/PrimaryGun.tscn",
     "texture": "res://Assets/ships/gun.png",
     "icon": "res://UI/Station/Assets/InventoryItems/gun.png",
     "hp": 50,
@@ -23,6 +25,7 @@
   },
     {
     "name": "Battery",
+	"activate": "res://Actors/ShipElements/ElementsAction/PrimaryGun.tscn",
     "texture": "res://Assets/ships/utility.png",
     "icon": "res://UI/Station/Assets/InventoryItems/utility.png",
     "hp": 50,
@@ -30,6 +33,6 @@
 	"consumption": -50,
     "price": 225,
     "type": "UTILITY",
-	"description": "Enhance maximum power."
+	"description": "Reduces power consumption, allowing more equipments."
   },
 ]

@@ -18,6 +18,8 @@ var max_booster = 200
 var is_boosting = false
 var booster_state = 0
 
+var primary_guns = []
+
 
 func _process(delta):
 	if is_boosting:
@@ -38,6 +40,8 @@ func equip_slot(slot_id, item_data):
 	var item = load("res://Actors/ShipElements/ShipElement.tscn").instance()
 	item.element = item_data["name"]
 	slots[slot_id].add_child(item)
+	if item_data["type"] == "GUN":
+		primary_guns.append(item)
 	equipped_slots[slot_id] = item_data
 	update_ship()
 	return true
@@ -48,7 +52,8 @@ func unequip_slot(slot_id):
 		if max_consumption - engine_consumption + slots[slot_id].get_child(0).data["consumption"] < 0:
 			return false
 		GameInstance.player.get_inventory().add_item(slots[slot_id].get_child(0).data)
-		print("unequiped item !")
+		if slots[slot_id].get_child(0).data["type"] == "GUN":
+			primary_guns.erase(slots[slot_id].get_child(0))
 		remove_slot(slot_id)
 		return true
 	return false
@@ -74,7 +79,13 @@ func update_ship():
 				engine_consumption += equipped_slots[key]["consumption"]
 			else:
 				max_consumption -= equipped_slots[key]["consumption"]
+
 	booster_time = (max_consumption - engine_consumption) / 10
+
+
+func primary_fire():
+	for gun in primary_guns:
+		gun.fire()
 
 
 func enter_station(station):
