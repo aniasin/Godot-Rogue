@@ -2,6 +2,7 @@ extends Area2D
 
 export var station_name = "Station A"
 var station_image = load("res://Assets/Stations/station.png")
+var map_icon = "station"
 
 var inventory = [
 	"Engine", "Gun", "Gun", "Engine", "Battery", "Engine", "Gun", "Gun", "Engine", "Battery"
