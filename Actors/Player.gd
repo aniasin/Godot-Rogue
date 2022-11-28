@@ -8,6 +8,7 @@ enum STATE {default = 0, station=1}
 var state = STATE.default
 
 var map
+var ship_window
 
 func _ready():
 	GameInstance.player = self
@@ -66,6 +67,10 @@ func toggle_map():
 	else:
 		map.queue_free()
 		map = null
+
+
+func toggle_ship():
+	ship.toggle_ship_window($Interface)
 
 
 func get_inventory():

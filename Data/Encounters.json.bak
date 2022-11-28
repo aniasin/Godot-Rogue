@@ -1,6 +1,8 @@
 [
   {
-    "name": "Asteroids",
-	"path": "res://Actors/Mobs/Asteroid.tscn",
+    "name": "asteroids",
+	"path": "res://Actors/Mobs/Asteroid.tscn",.
+	"hp": 10,
+	"damage": 10,
   },
-  ]
+ ]

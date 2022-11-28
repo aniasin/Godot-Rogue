@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 onready var slots = [null, $Gun1, $Gun2, $Gun3, $Utility1, $Utility2, $Utility3,
 $Engine1, $Engine2, $Engine3, $ThrustLeft1, $ThrustLeft2, $ThrustRight1, $ThrustRight2,]
+onready var tween = $"../Interface/Tween"
 
 var ui_window_path = "res://UI/Station/ShipHeavyWin.tscn"
 var equipped_slots = {}
@@ -19,6 +20,7 @@ var is_boosting = false
 var booster_state = 0
 
 var primary_guns = []
+var ship_window = null
 
 
 func _process(delta):
@@ -123,3 +125,25 @@ func _timer_booster_callback(timer):
 	stop_booster()
 	timer.queue_free()
 
+
+func toggle_ship_window(container):
+	if ship_window:
+		if not tween.is_active():
+			tween.interpolate_property(ship_window, "margin_left", 
+			-500, 0, .5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+			tween.start()
+			tween.connect("tween_all_completed", self, "_destroy_ship_window")
+	else:
+		var Window = load(ui_window_path)
+		ship_window = Window.instance()
+		ship_window.populate()
+		container.add_child(ship_window)
+		tween.interpolate_property(ship_window, "margin_left", 
+		0, -500, .5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		tween.start()
+
+
+func _destroy_ship_window():
+	ship_window.queue_free()
+	ship_window = null
+	tween.disconnect("tween_all_completed", self, "_destroy_ship_window")
