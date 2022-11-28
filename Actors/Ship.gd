@@ -65,7 +65,7 @@ func equip_slot(slot_id, item_data):
 		primary_guns.append(item)
 	if item_data["name"] == "Shield":
 		var field = load("res://Actors/ShipElements/ShieldField.tscn").instance()
-		field.hp = item_data["hp"]
+		field.power = item_data["power"]
 		field.owner_element = item
 		add_child(field)
 	equipped_slots[slot_id] = item_data

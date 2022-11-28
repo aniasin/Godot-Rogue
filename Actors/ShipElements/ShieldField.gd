@@ -1,12 +1,13 @@
 extends StaticBody2D
 
-var hp
+var power
 var owner_element
 
 func hit(collider, damage):
-	hp -= damage
-	owner_element.data["hp"] = hp
-	if hp <= 0:
-		queue_free()
+	power -= damage
+	owner_element.data["power"] = power
+	if power <= 0:
+		$CollisionShape2D.disabled = true
+		$Sprite.hide()
 
 

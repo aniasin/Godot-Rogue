@@ -34,6 +34,8 @@ func stop_fire():
 
 func damage(value):
 	data["hp"] -= value
+	if data["hp"] <= 0:
+		data["state"] = false
 	print(data["name"], " has been damaged for ", value)
 
 
