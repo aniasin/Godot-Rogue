@@ -34,6 +34,10 @@ func _process(delta):
 		booster_state = 0
 
 
+func hit(collider):
+	print("Hit by ", collider.name)
+
+
 func equip_slot(slot_id, item_data):
 	if item_data["consumption"] > max_consumption - engine_consumption:
 		return false

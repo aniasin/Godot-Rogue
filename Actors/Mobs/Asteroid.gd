@@ -1,11 +1,26 @@
 extends KinematicBody2D
 
 onready var move_direction = transform.x
-var speed = 100
+var speed = 50
 
 
 func _physics_process(delta):
 	var collision = move_and_collide(move_direction * speed * delta)
 	if collision:
-		move_direction = move_direction * -1
+		if collision.collider.has_method("hit"):
+			collision.collider.hit(self)
 		
+		var timer = Timer.new()
+		timer.set_wait_time(3)
+		timer.autostart = true
+		timer.connect("timeout", self, "_timer_timeout", [timer])
+		add_child(timer)
+		$CollisionShape2D.disabled = true
+		speed = 200
+		move_direction = move_direction.bounce(collision.normal)
+
+
+func _timer_timeout(timer):
+	speed = 50
+	$CollisionShape2D.disabled = false
+	timer.queue_free()
