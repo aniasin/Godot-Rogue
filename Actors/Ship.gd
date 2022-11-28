@@ -98,7 +98,7 @@ func enter_station(station):
 
 
 func start_booster():
-	if booster <= 0 and booster_time >= 1:
+	if booster <= 0 and booster_time >= 1 and engine_power > 20:
 		$TweenBooster.interpolate_property(self, "booster", 
 		0, max_booster, 1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 		var timer = Timer.new()

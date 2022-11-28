@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Effects/ParallaxBackground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actors/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Actors/Stations/Station.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Maps/Map01.gd" type="Script" id=4]
 [ext_resource path="res://Actors/Mobs/Asteroid.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Actors/Mobs/MobSpawner.tscn" type="PackedScene" id=6]
 
 [node name="Map01" type="Node2D"]
 script = ExtResource( 4 )
@@ -19,3 +20,8 @@ rotation = -1.5708
 
 [node name="Asteroid" parent="." instance=ExtResource( 5 )]
 position = Vector2( -464, -600 )
+
+[node name="MobSpawner" parent="." instance=ExtResource( 6 )]
+position = Vector2( 0, -456 )
+encounter_name = "asteroids"
+number = 10

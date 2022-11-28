@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://MobSpawner.gd" type="Script" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 1480.02
+
+[node name="MobSpawner" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Position2D1" type="Position2D" parent="."]
+position = Vector2( -192, 192 )
+
+[node name="Position2D2" type="Position2D" parent="."]
+position = Vector2( 192, -248 )
+
+[node name="Position2D3" type="Position2D" parent="."]
+position = Vector2( 192, 200 )
+
+[node name="Position2D4" type="Position2D" parent="."]
+position = Vector2( -192, -248 )
+
+[connection signal="body_entered" from="." to="." method="_on_MobSpawner_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

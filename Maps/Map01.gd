@@ -8,7 +8,6 @@ var dragged_slot
 func _ready():
 	GameInstance.current_map = self
 	player = $Player
-	station_pop_up($Station)
 
 
 func station_pop_up(station):

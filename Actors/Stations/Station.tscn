@@ -5,7 +5,7 @@
 [ext_resource path="res://Assets/Stations/light.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 366.083
+radius = 210.343
 
 [node name="Station" type="Area2D" groups=["pov"]]
 script = ExtResource( 2 )
@@ -21,4 +21,4 @@ position = Vector2( -176.5, 154.744 )
 scale = Vector2( 1.375, 1.28078 )
 texture = ExtResource( 3 )
 
-[connection signal="area_shape_entered" from="." to="." method="_on_Station_area_shape_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Station_body_entered"]

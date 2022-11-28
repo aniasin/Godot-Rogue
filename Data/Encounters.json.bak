@@ -1,0 +1,6 @@
+[
+  {
+    "name": "Asteroids",
+	"path": "res://Actors/Mobs/Asteroid.tscn",
+  },
+  ]
