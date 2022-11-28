@@ -10,6 +10,7 @@ var encounter_data
 
 func _ready():
 	encounter_data = GameInstance.encounters[encounter_name]
+	print("Spawner : ", encounter_data)
 
 
 func _on_MobSpawner_body_entered(body):
@@ -24,6 +25,7 @@ func spawn_mob():
 	if number > 0:
 		var i = number % positions.size()
 		var mob = load(encounter_data["path"]).instance()
+		mob.data = encounter_data
 		mob.set_position(positions[i].get_global_position())
 		mob.set_rotation(get_rotation())
 		GameInstance.current_map.add_child(mob)

@@ -30,3 +30,4 @@ func _ready():
 	var data_encounters = data_parse_encounters.result
 	for item in data_encounters:
 		encounters[item["name"]] = item
+	print(encounters)

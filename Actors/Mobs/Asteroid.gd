@@ -2,13 +2,15 @@ extends KinematicBody2D
 
 onready var move_direction = transform.x
 var speed = 50
+# When spawned, will be overwroten
+var data = {"damage":10, "hp":10, "name":"asteroids","path":"res://Actors/Mobs/Asteroid.tscn"}
 
 
 func _physics_process(delta):
 	var collision = move_and_collide(move_direction * speed * delta)
 	if collision:
 		if collision.collider.has_method("hit"):
-			collision.collider.hit(self)
+			collision.collider.hit(self, data["damage"])
 		
 		var timer = Timer.new()
 		timer.set_wait_time(3)

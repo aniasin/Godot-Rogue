@@ -1,7 +1,7 @@
 [
   {
     "name": "Engine",
-	"activate": "res://Actors/ShipElements/ElementsAction/PrimaryGun.tscn",
+	"activate": "res://Actors/ShipElements/ElementsAction/NoActivation.tscn",
     "texture": "res://Assets/ships/engine.png",
     "icon": "res://UI/Station/Assets/InventoryItems/engine.png",
     "hp": 50,
@@ -27,7 +27,7 @@
   },
     {
     "name": "Battery",
-	"activate": "res://Actors/ShipElements/ElementsAction/PrimaryGun.tscn",
+	"activate": "res://Actors/ShipElements/ElementsAction/NoActivation.tscn",
     "texture": "res://Assets/ships/utility.png",
     "icon": "res://UI/Station/Assets/InventoryItems/utility.png",
     "hp": 50,

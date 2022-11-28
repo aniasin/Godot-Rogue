@@ -32,6 +32,11 @@ func stop_fire():
 	is_firing = false
 
 
+func damage(value):
+	data["hp"] -= value
+	print(data["name"], " has been damaged for ", value)
+
+
 func _on_TimerFireRate_timeout():
 	if is_firing:
 		element_fire.fire()

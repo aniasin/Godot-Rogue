@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+
 onready var slots = [null, $Gun1, $Gun2, $Gun3, $Utility1, $Utility2, $Utility3,
 $Engine1, $Engine2, $Engine3, $ThrustLeft1, $ThrustLeft2, $ThrustRight1, $ThrustRight2,]
 onready var tween = $"../Interface/Tween"
@@ -7,6 +8,8 @@ onready var tween = $"../Interface/Tween"
 var ui_window_path = "res://UI/Station/ShipHeavyWin.tscn"
 var equipped_slots = {}
 
+var max_hp = 200
+var hp = max_hp
 var weight = 3
 var engine_power = 20
 var rotation_speed = 1.5
@@ -23,6 +26,10 @@ var primary_guns = []
 var ship_window = null
 
 
+func _ready():
+	pass
+
+
 func _process(delta):
 	if is_boosting:
 		booster_time -= delta
@@ -34,8 +41,16 @@ func _process(delta):
 		booster_state = 0
 
 
-func hit(collider):
-	print("Hit by ", collider.name)
+func hit(collider, damage):
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	if randf() > .8 or hp <= 0:
+		var index = rng.randi_range(1, equipped_slots.size())
+		if slots[index].get_child_count() > 0:
+			slots[index].get_child(0).damage(damage)
+			return
+	hp -= damage
+	print("Hull has been damaged for", damage)
 
 
 func equip_slot(slot_id, item_data):

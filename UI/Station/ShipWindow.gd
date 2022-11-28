@@ -21,3 +21,5 @@ func populate():
 func update_ship_stats():
 	var power = str(GameInstance.current_ship.engine_consumption) + "/" + str(GameInstance.current_ship.max_consumption)
 	$LabelPower.text = power
+	var hp = str(GameInstance.current_ship.hp) + "/" + str(GameInstance.current_ship.max_hp)
+	$LabelHull.text = hp
