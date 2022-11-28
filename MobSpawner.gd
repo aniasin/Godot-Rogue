@@ -25,6 +25,7 @@ func spawn_mob():
 		var i = number % positions.size()
 		var mob = load(encounter_data["path"]).instance()
 		mob.set_position(positions[i].get_position())
+		mob.set_rotation(get_rotation())
 		GameInstance.current_map.add_child(mob)
 		number -= 1
 	else:

@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var move_direction = Vector2(1, 1)
+onready var move_direction = transform.x
 var speed = 100
 
 

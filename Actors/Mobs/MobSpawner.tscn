@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://MobSpawner.gd" type="Script" id=1]
+[ext_resource path="res://UI/Dummy.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 1480.02
@@ -25,6 +26,8 @@ position = Vector2( 192, 200 )
 
 [node name="Position2D4" type="Position2D" parent="."]
 position = Vector2( -192, -248 )
+
+[node name="Dummy" parent="." instance=ExtResource( 2 )]
 
 [connection signal="body_entered" from="." to="." method="_on_MobSpawner_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

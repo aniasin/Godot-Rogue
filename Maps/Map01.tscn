@@ -22,6 +22,7 @@ rotation = -1.5708
 position = Vector2( -464, -600 )
 
 [node name="MobSpawner" parent="." instance=ExtResource( 6 )]
-position = Vector2( 0, -456 )
+position = Vector2( 0, -352 )
+rotation = 2.64195
 encounter_name = "asteroids"
 number = 10
