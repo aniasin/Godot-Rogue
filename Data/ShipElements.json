@@ -41,4 +41,18 @@
 	"state": true,
 	"description": "Reduces power consumption, allowing more equipments."
   },
+	{
+    "name": "Shield",
+	"activate": "res://Actors/ShipElements/ElementsAction/NoActivation.tscn",
+    "texture": "res://Assets/ships/shield.png",
+    "icon": "res://UI/Station/Assets/InventoryItems/shield.png",
+    "hp": 50,
+	"rate": 60,
+	"power": 50,
+	"consumption": 50,
+    "price": 300,
+    "type": "UTILITY",
+	"state": true,
+	"description": "Generates an energy field absorbing any damage."
+  },
 ]

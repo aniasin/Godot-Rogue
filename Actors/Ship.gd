@@ -41,7 +41,7 @@ func _process(delta):
 		booster_state = 0
 
 
-func hit(collider, damage):
+func hit(_collider, damage):
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	if randf() > .8 or hp <= 0:
@@ -63,6 +63,11 @@ func equip_slot(slot_id, item_data):
 	slots[slot_id].add_child(item)
 	if item_data["type"] == "GUN":
 		primary_guns.append(item)
+	if item_data["name"] == "Shield":
+		var field = load("res://Actors/ShipElements/ShieldField.tscn").instance()
+		field.hp = item_data["hp"]
+		field.owner_element = item
+		add_child(field)
 	equipped_slots[slot_id] = item_data
 	update_ship()
 	return true

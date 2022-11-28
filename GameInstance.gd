@@ -1,5 +1,7 @@
 extends Node
 
+enum STATE {default = 0, station=1}
+
 var current_map
 var player
 var current_ship

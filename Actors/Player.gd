@@ -4,8 +4,7 @@ var velocity = Vector2()
 var rotation_dir = 0
 var ship
 
-enum STATE {default = 0, station=1}
-var state = STATE.default
+var state = GameInstance.STATE.default
 
 var map
 var ship_window
@@ -34,14 +33,14 @@ func get_input():
 func _unhandled_input(event):
 	if event.is_action_pressed("inventory"):
 		toggle_inventory()
-	if event.is_action_pressed("left click") and state != STATE.station:
+	if event.is_action_pressed("left click") and state != GameInstance.STATE.station:
 		ship.start_primary_fire()
-	if event.is_action_released("left click") and state != STATE.station:
+	if event.is_action_released("left click") and state != GameInstance.STATE.station:
 		ship.stop_primary_fire()
 
 
 func _physics_process(delta):
-	if state == STATE.station:
+	if state == GameInstance.STATE.station:
 		velocity = Vector2()
 	else:
 		get_input()

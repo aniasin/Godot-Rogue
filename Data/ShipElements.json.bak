@@ -10,6 +10,7 @@
 	"consumption": 100,
     "price": 125,
     "type": "ENGINE",
+	"state": true,
 	"description": "A regular engine."
   },
   {
@@ -23,6 +24,7 @@
 	"consumption": 20,
     "price": 125,
     "type": "GUN",
+	"state": true,
 	"description": "A regular gun."
   },
     {
@@ -36,6 +38,7 @@
 	"consumption": -50,
     "price": 225,
     "type": "UTILITY",
+	"state": true,
 	"description": "Reduces power consumption, allowing more equipments."
   },
 ]
