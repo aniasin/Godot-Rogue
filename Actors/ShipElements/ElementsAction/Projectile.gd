@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 
 export (int) var speed = 1000
 
@@ -12,9 +12,11 @@ func _ready():
 	add_child(timer)
 
 
-func _process(delta):
-	var velocity = Vector2(0, -speed).rotated(rotation)
-	position += velocity * delta
+func _physics_process(delta):
+	var collision = move_and_collide(Vector2(0, -speed).rotated(rotation) * delta)
+	if collision:
+		print("Collided with ", collision.collider.name)
+		explode()
 
 
 func explode():

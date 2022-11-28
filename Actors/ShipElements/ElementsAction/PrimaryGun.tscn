@@ -3,4 +3,5 @@
 [ext_resource path="res://Actors/ShipElements/ElementsAction/PrimaryGun.gd" type="Script" id=1]
 
 [node name="ElementFire" type="Node2D"]
+position = Vector2( 0, -50 )
 script = ExtResource( 1 )

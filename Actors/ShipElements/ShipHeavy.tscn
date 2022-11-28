@@ -7,8 +7,9 @@
 radius = 44.0
 height = 42.0
 
-[node name="ShipHeavy" type="Area2D"]
+[node name="ShipHeavy" type="KinematicBody2D"]
 rotation = 1.5708
+collision_mask = 2
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true

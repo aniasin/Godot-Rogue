@@ -22,16 +22,18 @@ func get_texture():
 
 
 func start_fire():
-	if not is_firing:
+	if $TimerFireRate.is_stopped():
 		$TimerFireRate.start()
-		element_fire.fire(self)
+		element_fire.fire()
 		is_firing = true
 
 
 func stop_fire():
-	$TimerFireRate.stop()
 	is_firing = false
 
 
 func _on_TimerFireRate_timeout():
-	element_fire.fire(self)
+	if is_firing:
+		element_fire.fire()
+	else:
+		$TimerFireRate.stop()
