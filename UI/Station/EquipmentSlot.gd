@@ -67,14 +67,11 @@ func drop_data(_pos, slot_data):
 
 
 func _on_InventorySlot_mouse_entered():
-	if item_data:
+	if item_data and not tooltip:
 		var Tooltip = load("res://UI/Station/ToolTip.tscn")
 		tooltip = Tooltip.instance()
 		tooltip.set_text(item_data)
-		#TODO clean this shit
-		var owning_window = get_parent().get_parent().get_parent().get_parent().get_parent().get_parent()
-		owning_window.add_child(tooltip)
-		tooltip.rect_position = owning_window.get_local_mouse_position()
+		$Timer.start()
 
 
 func _on_InventorySlot_mouse_exited():
@@ -82,3 +79,11 @@ func _on_InventorySlot_mouse_exited():
 		tooltip.hide()
 		tooltip.queue_free()
 		tooltip = null
+		$Timer.stop()
+
+
+func _on_Timer_timeout():
+	#TODO clean this shit
+	var owning_window = get_parent().get_parent().get_parent().get_parent().get_parent().get_parent()
+	owning_window.add_child(tooltip)
+	tooltip.rect_position = owning_window.get_local_mouse_position()

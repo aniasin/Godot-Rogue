@@ -52,8 +52,6 @@ func unequip_slot(slot_id):
 		if max_consumption - engine_consumption + slots[slot_id].get_child(0).data["consumption"] < 0:
 			return false
 		GameInstance.player.get_inventory().add_item(slots[slot_id].get_child(0).data)
-		if slots[slot_id].get_child(0).data["type"] == "GUN":
-			primary_guns.erase(slots[slot_id].get_child(0))
 		remove_slot(slot_id)
 		return true
 	return false
@@ -61,6 +59,8 @@ func unequip_slot(slot_id):
 
 func remove_slot(slot_id):
 	if equipped_slots.has(slot_id):
+		if slots[slot_id].get_child(0).data["type"] == "GUN":
+			primary_guns.erase(slots[slot_id].get_child(0))
 		slots[slot_id].get_child(0).queue_free()
 		equipped_slots.erase(slot_id)
 	update_ship()
@@ -83,9 +83,14 @@ func update_ship():
 	booster_time = (max_consumption - engine_consumption) / 10
 
 
-func primary_fire():
+func start_primary_fire():
 	for gun in primary_guns:
-		gun.fire()
+		gun.start_fire()
+
+
+func stop_primary_fire():
+	for gun in primary_guns:
+		gun.stop_fire()
 
 
 func enter_station(station):

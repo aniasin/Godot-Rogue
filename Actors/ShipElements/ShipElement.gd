@@ -21,14 +21,16 @@ func get_texture():
 	return $Sprite.texture
 
 
-func fire():
+func start_fire():
 	if not is_firing:
 		$TimerFireRate.start()
 		element_fire.fire(self)
-	else:
-		$TimerFireRate.stop()
-	is_firing = not is_firing
+		is_firing = true
 
+
+func stop_fire():
+	$TimerFireRate.stop()
+	is_firing = false
 
 
 func _on_TimerFireRate_timeout():

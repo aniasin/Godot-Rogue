@@ -19,7 +19,7 @@ func _ready():
 	tween.start()
 
 
-func _process(delta):
+func _process(_delta):
 	for item in markers:
 		var obj_pos = (item.position - GameInstance.player.position) * grid_scale + rect_size / 2
 		obj_pos.x = clamp(obj_pos.x, 0, rect_size.x)
