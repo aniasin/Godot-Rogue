@@ -3,7 +3,7 @@ extends StaticBody2D
 var power
 var owner_element
 
-func hit(collider, damage):
+func hit(_collider, damage):
 	power -= damage
 	owner_element.data["power"] = power
 	if power <= 0:

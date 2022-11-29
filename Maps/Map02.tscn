@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Effects/ParallaxBackground.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Actors/Stations/Station.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Actors/Mobs/Asteroid.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Actors/Mobs/MobSpawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Maps/Map01.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Backgrounds/2824536.jpg" type="Texture" id=7]
+
+[node name="Map02" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Station" parent="." instance=ExtResource( 2 )]
+position = Vector2( -13, -1462 )
+
+[node name="Asteroid" parent="." instance=ExtResource( 4 )]
+position = Vector2( -464, -600 )
+
+[node name="MobSpawner" parent="." instance=ExtResource( 5 )]
+position = Vector2( 720, -1848 )
+rotation = 2.64195
+encounter_name = "asteroids"
+number = 10
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 1 )]
+
+[node name="Sprite" parent="ParallaxBackground/ParallaxLayer" index="0"]
+texture = ExtResource( 7 )
+
+[editable path="ParallaxBackground"]

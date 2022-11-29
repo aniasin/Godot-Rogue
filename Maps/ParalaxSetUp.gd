@@ -5,6 +5,8 @@ export (int) var sprite_scale = 2
 export (bool) var y_mirroring = false
 
 var last_screen_size = Vector2()
+
+
 func _process(_delta):
 	var screen_size = get_viewport_rect().size * camera.zoom
 	if screen_size != last_screen_size:

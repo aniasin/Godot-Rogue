@@ -8,6 +8,11 @@ var current_ship
 var ship_elements = {}
 var encounters = {}
 
+# Map transition
+var transition_id
+# SaveGame
+var player_equipments = {}
+
 
 func _ready():
 	var data_file_ships = File.new()
@@ -33,3 +38,24 @@ func _ready():
 	for item in data_encounters:
 		encounters[item["name"]] = item
 	print(encounters)
+
+
+func spawn_player():
+	player = load("res://Actors/Player.tscn").instance()
+	current_ship = load("res://Actors/ShipElements/ShipHeavy.tscn").instance()
+	player.add_child(current_ship)
+	player.ship = current_ship
+	var spawn_location = Vector2()
+	var transition_objects = get_tree().get_nodes_in_group("transition")
+	for object in transition_objects:
+		if object.transition_id == transition_id:
+			spawn_location = object.spawn_location
+			break
+	player.set_position(spawn_location)
+	current_map.add_child(player) 
+	return player
+
+
+func save_game():
+	player_equipments = current_ship.equipped_slots
+

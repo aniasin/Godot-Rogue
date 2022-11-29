@@ -10,8 +10,9 @@ var map
 var ship_window
 
 func _ready():
+	print("Player ready !")
 	GameInstance.player = self
-	equip_ship($ShipHeavy)
+	restore_state()
 
 
 func get_input():
@@ -74,3 +75,8 @@ func toggle_ship():
 
 func get_inventory():
 	return $InventoryComponent
+	
+	
+func restore_state():
+	if ship:
+		ship.restore_state()

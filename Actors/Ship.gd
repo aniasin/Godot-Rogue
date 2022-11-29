@@ -50,7 +50,7 @@ func hit(_collider, damage):
 			slots[index].get_child(0).damage(damage)
 			return
 	hp -= damage
-	print("Hull has been damaged for", damage)
+	print("Hull has been damaged for ", damage)
 
 
 func equip_slot(slot_id, item_data):
@@ -120,7 +120,7 @@ func stop_primary_fire():
 
 
 func enter_station(station):
-	print(station.station_name)
+	print("Ship enters ", station.station_name)
 
 
 func start_booster():
@@ -171,3 +171,11 @@ func _destroy_ship_window():
 	ship_window.queue_free()
 	ship_window = null
 	tween.disconnect("tween_all_completed", self, "_destroy_ship_window")
+
+
+func restore_state():
+	print("Ship tries to restore state...")
+	print(GameInstance.player_equipments)
+	for key in GameInstance.player_equipments:
+		equip_slot(key, GameInstance.player_equipments[key])
+

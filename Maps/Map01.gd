@@ -7,8 +7,7 @@ var dragged_slot
 
 func _ready():
 	GameInstance.current_map = self
-	player = $Player
-	station_pop_up($Station)
+	player = GameInstance.spawn_player()
 
 
 func station_pop_up(station):
@@ -20,12 +19,14 @@ func station_pop_up(station):
 		add_child(station_menu)
 		station_open = station
 		station_menu.connect("station_quit", self, "_on_station_quit")
+		player.hide()
 
 
 func _on_station_quit():
 	station_open.activate_collision()
 	station_open = null
 	player.state = GameInstance.STATE.default
+	player.show()
 
 
 func _input(event):

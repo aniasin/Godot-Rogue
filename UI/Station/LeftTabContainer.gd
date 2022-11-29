@@ -9,6 +9,7 @@ func initialize(items, station_actor):
 	var player_items_data = GameInstance.player.get_inventory().get_items_data()
 	$Shop/InventoryWin.populate(player_items_data)
 	$Shop/ProductWin.populate(items)
+# warning-ignore:return_value_discarded
 	$Shop/InventoryWin.connect("item_bought", station_actor, "_on_item_bought")
 
 
