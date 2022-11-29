@@ -29,25 +29,25 @@ number = 10
 texture = ExtResource( 7 )
 
 [node name="MapTransition" parent="." instance=ExtResource( 3 )]
-position = Vector2( -149, -5675 )
-map_destination = "res://Maps/Map01.gd"
+position = Vector2( -72, -23096 )
+map_destination = "res://Maps/Map01.tscn"
 
 [node name="MapTransition2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 9590, 2270 )
+position = Vector2( 23136, 7.99988 )
 rotation = 1.57524
-map_destination = "res://Maps/Map01.gd"
+map_destination = "res://Maps/Map01.tscn"
 transition_id = 1
 
 [node name="MapTransition3" parent="." instance=ExtResource( 3 )]
-position = Vector2( -297, 10129 )
+position = Vector2( 24, 23272 )
 rotation = -3.13371
-map_destination = "res://Maps/Map01.gd"
+map_destination = "res://Maps/Map01.tscn"
 transition_id = 2
 
 [node name="MapTransition4" parent="." instance=ExtResource( 3 )]
-position = Vector2( -13219, 3210 )
+position = Vector2( -23544, 64.0002 )
 rotation = -1.56586
-map_destination = "res://Maps/Map01.gd"
+map_destination = "res://Maps/Map01.tscn"
 transition_id = 3
 
 [editable path="ParallaxBackground"]

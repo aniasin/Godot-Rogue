@@ -7,6 +7,7 @@ var dragged_slot
 
 func _ready():
 	GameInstance.current_map = self
+	GameInstance.parallax = $ParallaxBackground.get_child(0)
 	player = GameInstance.spawn_player()
 
 

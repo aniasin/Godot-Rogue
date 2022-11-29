@@ -6,7 +6,7 @@
 [ext_resource path="res://UI/Station/Assets/stationimage.png" type="Texture" id=4]
 [ext_resource path="res://UI/Station/Fonts/ethnocentric rg.otf" type="DynamicFontData" id=5]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=7]
 code = "shader_type canvas_item;
 
 uniform float circle_size : hint_range(0,1) = 0.5f;
@@ -18,7 +18,7 @@ void fragment(){
 }"
 
 [sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 1 )
+shader = SubResource( 7 )
 shader_param/circle_size = 1.0
 
 [sub_resource type="DynamicFont" id=6]

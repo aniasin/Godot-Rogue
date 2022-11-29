@@ -22,15 +22,22 @@ func _ready():
 
 func _on_MapTransition_body_entered(body):
 	if body.has_method("enter_station"):
+		print("Entering map transition...")
 		$Timer.start()
 
 
-func _on_MapTransition_body_exited(body):
-	if body.has_method("enter_station"):
-		$Timer.stop()
-
-
-func _on_Timer_timeout():
+func travel():
 	GameInstance.save_game()
 	GameInstance.transition_id = destination_id
 	var _new_scene = get_tree().change_scene(map_destination)
+
+
+func arrival():
+	$Transition.to_black = false
+	$Transition.activate()
+
+
+func _on_Timer_timeout():
+	$Transition.to_black = true
+	$Transition.activate()
+

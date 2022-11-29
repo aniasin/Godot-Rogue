@@ -10,9 +10,12 @@ var encounters = {}
 
 # Map transition
 var transition_id
+var parallax
 # SaveGame
 var player_equipments = {}
 var player_inventory = []
+var player_rotation = 0
+var player_position = Vector2()
 var player_money = 0
 
 
@@ -51,13 +54,17 @@ func spawn_player():
 	for object in transition_objects:
 		if object.transition_id == transition_id:
 			spawn_location = object.spawn_location
+			object.arrival()
 			break
 	player.set_position(spawn_location)
-	current_map.add_child(player) 
+	player.set_rotation(player_rotation)
+	current_map.add_child(player)
+	parallax.set_up(player.get_camera())
 	return player
 
 
 func save_game():
+	player_rotation = player.get_rotation()
 	player_equipments = current_ship.equipped_slots
 	player_inventory = player.get_inventory().get_items_data()
 	player_money = player.get_inventory().get_money()

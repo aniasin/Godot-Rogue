@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Maps/MapTransition.gd" type="Script" id=1]
+[ext_resource path="res://UI/Dummy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Maps/Transition.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -14,10 +16,16 @@ shape = SubResource( 1 )
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 0, 3224 )
 
+[node name="Dummy" parent="Position2D" instance=ExtResource( 2 )]
+position = Vector2( 1.52588e-05, -440 )
+rotation = 3.14089
+scale = Vector2( 19.7299, 8.79595 )
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
 
+[node name="Transition" parent="." instance=ExtResource( 3 )]
+
 [connection signal="body_entered" from="." to="." method="_on_MapTransition_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_MapTransition_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

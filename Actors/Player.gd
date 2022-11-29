@@ -76,7 +76,10 @@ func toggle_ship():
 func get_inventory():
 	return $InventoryComponent
 	
-	
-func restore_state():
+
+func get_camera():
+	return $Camera2D
+
+func restore_state():	
 	ship.restore_state()
 	$InventoryComponent.restore_state()

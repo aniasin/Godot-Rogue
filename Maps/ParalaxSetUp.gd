@@ -1,13 +1,12 @@
 extends ParallaxLayer
 
-onready var camera = get_tree().current_scene.get_node("Player/Camera2D")
 export (int) var sprite_scale = 2
 export (bool) var y_mirroring = false
 
 var last_screen_size = Vector2()
 
 
-func _process(_delta):
+func set_up(camera):
 	var screen_size = get_viewport_rect().size * camera.zoom
 	if screen_size != last_screen_size:
 		var sprite = get_children()[0]

@@ -120,7 +120,7 @@ func stop_primary_fire():
 
 
 func enter_station(station):
-	pass
+	print(station.name)
 
 
 func start_booster():
