@@ -12,6 +12,8 @@ var encounters = {}
 var transition_id
 # SaveGame
 var player_equipments = {}
+var player_inventory = []
+var player_money = 0
 
 
 func _ready():
@@ -58,4 +60,6 @@ func spawn_player():
 
 func save_game():
 	player_equipments = current_ship.equipped_slots
+	player_inventory = player.get_inventory().get_items_data()
+	player_money = player.get_inventory().get_money()
 

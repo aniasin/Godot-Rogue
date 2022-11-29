@@ -50,3 +50,9 @@ func get_items_data():
 	return items_data
 
 
+func restore_state():
+	inc_money(GameInstance.player_money)
+	for item in GameInstance.player_inventory:
+		add_item(item)
+
+

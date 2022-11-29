@@ -78,5 +78,5 @@ func get_inventory():
 	
 	
 func restore_state():
-	if ship:
-		ship.restore_state()
+	ship.restore_state()
+	$InventoryComponent.restore_state()
