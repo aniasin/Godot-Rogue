@@ -3,7 +3,7 @@ extends Area2D
 export (String) var map_destination
 export (int) var transition_id
 
-onready var spawn_position = $Position2D.get_position()
+onready var spawn_location = $Position2D.get_global_position()
 
 var destination_id
 

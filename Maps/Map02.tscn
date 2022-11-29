@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Effects/ParallaxBackground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actors/Stations/Station.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Maps/MapTransition.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Actors/Mobs/Asteroid.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Actors/Mobs/MobSpawner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Maps/Map01.gd" type="Script" id=6]
@@ -26,5 +27,27 @@ number = 10
 
 [node name="Sprite" parent="ParallaxBackground/ParallaxLayer" index="0"]
 texture = ExtResource( 7 )
+
+[node name="MapTransition" parent="." instance=ExtResource( 3 )]
+position = Vector2( -149, -5675 )
+map_destination = "res://Maps/Map01.gd"
+
+[node name="MapTransition2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 9590, 2270 )
+rotation = 1.57524
+map_destination = "res://Maps/Map01.gd"
+transition_id = 1
+
+[node name="MapTransition3" parent="." instance=ExtResource( 3 )]
+position = Vector2( -297, 10129 )
+rotation = -3.13371
+map_destination = "res://Maps/Map01.gd"
+transition_id = 2
+
+[node name="MapTransition4" parent="." instance=ExtResource( 3 )]
+position = Vector2( -13219, 3210 )
+rotation = -1.56586
+map_destination = "res://Maps/Map01.gd"
+transition_id = 3
 
 [editable path="ParallaxBackground"]

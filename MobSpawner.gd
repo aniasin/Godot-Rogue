@@ -10,7 +10,6 @@ var encounter_data
 
 func _ready():
 	encounter_data = GameInstance.encounters[encounter_name]
-	print("Spawner : ", encounter_data)
 
 
 func _on_MobSpawner_body_entered(body):

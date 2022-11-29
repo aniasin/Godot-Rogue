@@ -120,7 +120,7 @@ func stop_primary_fire():
 
 
 func enter_station(station):
-	print("Ship enters ", station.station_name)
+	pass
 
 
 func start_booster():
@@ -174,8 +174,6 @@ func _destroy_ship_window():
 
 
 func restore_state():
-	print("Ship tries to restore state...")
-	print(GameInstance.player_equipments)
 	for key in GameInstance.player_equipments:
 		equip_slot(key, GameInstance.player_equipments[key])
 

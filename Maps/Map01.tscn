@@ -25,5 +25,23 @@ encounter_name = "asteroids"
 number = 10
 
 [node name="MapTransition" parent="." instance=ExtResource( 7 )]
-position = Vector2( -496, -2976 )
+position = Vector2( 48, -7568 )
 map_destination = "res://Maps/Map02.tscn"
+
+[node name="MapTransition2" parent="." instance=ExtResource( 7 )]
+position = Vector2( -7864, -1288 )
+rotation = -1.5708
+map_destination = "res://Maps/Map02.tscn"
+transition_id = 3
+
+[node name="MapTransition3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 9592, -256 )
+rotation = -1.5708
+map_destination = "res://Maps/Map02.tscn"
+transition_id = 1
+
+[node name="MapTransition4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 528, 7048 )
+rotation = 3.14159
+map_destination = "res://Maps/Map02.tscn"
+transition_id = 2
