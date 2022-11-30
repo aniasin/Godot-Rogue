@@ -13,7 +13,7 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.5
 
 [node name="Position2D1" type="Position2D" parent="."]
 position = Vector2( -192, 192 )

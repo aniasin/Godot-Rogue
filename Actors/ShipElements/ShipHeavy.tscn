@@ -101,3 +101,5 @@ __meta__ = {
 }
 
 [node name="TweenBooster" type="Tween" parent="."]
+
+[node name="TweenThrust" type="Tween" parent="."]

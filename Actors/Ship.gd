@@ -11,16 +11,13 @@ var equipped_slots = {}
 var max_hp = 200
 var hp = max_hp
 var weight = 3
-var engine_power = 20
+var engine_power = 100
 var rotation_speed = 1.5
 var engine_consumption = 20
 var max_consumption = 120
-var booster = 0
-var booster_time = 0
-var max_booster = 200
 
-var is_boosting = false
-var booster_state = 0
+var thrust = Vector2()
+
 
 var primary_guns = []
 var ship_window = null
@@ -30,21 +27,10 @@ func _ready():
 	pass
 
 
-func _process(delta):
-	if is_boosting:
-		booster_time -= delta
-	else:
-		booster_time = clamp(booster_time + delta, 0, (max_consumption - engine_consumption) / 10)
-	if max_consumption - engine_consumption > 0:
-		booster_state = (booster_time / (max_consumption - engine_consumption)) * 1000
-	else:
-		booster_state = 0
-
-
 func hit(_collider, damage):
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	if randf() > .8 or hp <= 0:
+	if rng.randf() > .8 or hp <= 0:
 		var index = rng.randi_range(1, equipped_slots.size())
 		if slots[index].get_child_count() > 0:
 			slots[index].get_child(0).damage(damage)
@@ -106,8 +92,6 @@ func update_ship():
 			else:
 				max_consumption -= equipped_slots[key]["consumption"]
 
-	booster_time = (max_consumption - engine_consumption) / 10
-
 
 func start_primary_fire():
 	for gun in primary_guns:
@@ -123,31 +107,24 @@ func enter_station(station):
 	print(station.name)
 
 
-func start_booster():
-	if booster <= 0 and booster_time >= 1 and engine_power > 20:
-		$TweenBooster.interpolate_property(self, "booster", 
-		0, max_booster, 1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-		var timer = Timer.new()
-		timer.set_one_shot(true)
-		timer.set_wait_time(booster_time)
-		timer.autostart = true
-		timer.connect("timeout", self, "_timer_booster_callback", [timer])
-		add_child(timer)
-		$TweenBooster.start()
-		is_boosting = true
+func thrust_up(velocity):
+	thrust = velocity
+	var goal_velocity = (Vector2(engine_power, 0)).rotated(GameInstance.player.rotation)
+	$TweenThrust.interpolate_property(self, "thrust", thrust, goal_velocity, 1,
+	Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$TweenThrust.start()
 
 
-func stop_booster():
-	$TweenBooster.stop_all()
-	$TweenBooster.interpolate_property(self, "booster", 
-	booster, 0, 1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-	$TweenBooster.start()
-	is_boosting = false
+func thrust_down(velocity):
+	thrust = velocity
+	var goal_velocity = (Vector2(engine_power, 0) * -1).rotated(GameInstance.player.rotation)
+	$TweenThrust.interpolate_property(self, "thrust", thrust, goal_velocity, 1,
+	Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$TweenThrust.start()
 
 
-func _timer_booster_callback(timer):
-	stop_booster()
-	timer.queue_free()
+func thrust_release():
+	$TweenThrust.stop_all()
 
 
 func toggle_ship_window(container):

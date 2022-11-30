@@ -24,6 +24,8 @@ func _on_MapTransition_body_entered(body):
 	if body.has_method("enter_station"):
 		print("Entering map transition...")
 		$Timer.start()
+	if body.has_method("out_of_boundary"):
+		body.out_of_boundary()
 
 
 func travel():
