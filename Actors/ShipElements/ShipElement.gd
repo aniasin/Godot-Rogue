@@ -21,7 +21,7 @@ func get_texture():
 	
 
 func activate_element():
-	element_action.activate()
+	element_action.activate(get_parent().get_parent().collision_layer, get_parent().get_parent().collision_mask)
 
 
 func deactivate_element():

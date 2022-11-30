@@ -25,8 +25,13 @@ var ship_window = null
 
 
 func _ready():
-	if $"../Interface/Tween":
+	if get_parent().name == GameInstance.player.name:
 		tween = $"../Interface/Tween"
+		collision_layer = 1
+		collision_mask = 2
+	else:
+		collision_layer = 2
+		collision_mask = 1
 	for item in get_children():
 		if item is Position2D:
 			slots.append(item)
@@ -48,7 +53,7 @@ func equip_slot(slot_id, item_data):
 	if item_data["consumption"] > max_consumption - engine_consumption:
 		return false
 	unequip_slot(slot_id)
-	GameInstance.player.get_inventory().remove_item(item_data)
+	get_parent().get_inventory().remove_item(item_data)
 	var item = load("res://Actors/ShipElements/ShipElement.tscn").instance()
 	item.element = item_data["name"]
 	slots[slot_id].add_child(item)
@@ -70,7 +75,7 @@ func unequip_slot(slot_id):
 	if equipped_slots.has(slot_id) and equipped_slots[slot_id]:
 		if max_consumption - engine_consumption + slots[slot_id].get_child(0).data["consumption"] < 0:
 			return false
-		GameInstance.player.get_inventory().add_item(slots[slot_id].get_child(0).data)
+		get_parent().get_inventory().add_item(slots[slot_id].get_child(0).data)
 		remove_slot(slot_id)
 		return true
 	return false
@@ -118,7 +123,7 @@ func enter_station(station):
 
 func add_thrust(velocity, direction, angle):
 	thrust = velocity
-	var goal_velocity = (Vector2(engine_power, 0) * direction).rotated(GameInstance.player.rotation + angle)
+	var goal_velocity = (Vector2(engine_power, 0) * direction).rotated(get_parent().rotation + angle)
 	$TweenThrust.interpolate_property(self, "thrust", thrust, goal_velocity, 1,
 	Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$TweenThrust.start()

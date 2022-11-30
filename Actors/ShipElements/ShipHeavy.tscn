@@ -9,7 +9,8 @@ height = 42.0
 
 [node name="ShipHeavy" type="KinematicBody2D"]
 rotation = 1.5708
-collision_mask = 2
+collision_layer = 0
+collision_mask = 0
 script = ExtResource( 2 )
 ui_window_path = "res://UI/Station/ShipHeavyWin.tscn"
 
