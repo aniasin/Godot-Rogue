@@ -46,7 +46,7 @@ func _ready():
 
 func spawn_player():
 	player = load("res://Actors/Player.tscn").instance()
-	current_ship = load("res://Actors/ShipElements/ShipHeavy.tscn").instance()
+	current_ship = load("res://Actors/ShipElements/ShipMedium.tscn").instance()
 	player.add_child(current_ship)
 	player.ship = current_ship
 	var spawn_location = Vector2()

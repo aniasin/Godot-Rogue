@@ -1,11 +1,11 @@
 extends KinematicBody2D
 
 
-onready var slots = [null, $Gun1, $Gun2, $Gun3, $Utility1, $Utility2, $Utility3,
-$Engine1, $Engine2, $Engine3, $ThrustLeft1, $ThrustLeft2, $ThrustRight1, $ThrustRight2,]
+onready var slots = [null]
 onready var tween = $"../Interface/Tween"
 
-var ui_window_path = "res://UI/Station/ShipHeavyWin.tscn"
+export (String) var ui_window_path
+
 var equipped_slots = {}
 
 var max_hp = 200
@@ -25,7 +25,9 @@ var ship_window = null
 
 
 func _ready():
-	pass
+	for item in get_children():
+		if item is Position2D:
+			slots.append(item)
 
 
 func hit(_collider, damage):
