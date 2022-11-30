@@ -1,8 +1,16 @@
 [
   {
     "name": "asteroids",
-	"path": "res://Actors/Mobs/Asteroid.tscn",.
+	"path": "res://Actors/Mobs/Asteroid.tscn",
+	"ship": "",
 	"hp": 10,
 	"damage": 10,
+  },
+  {
+  "name": "light_mob",
+  "path": "res://Actors/Mobs/Mob.tscn",
+  "ship": "res://Actors/ShipElements/ShipLght.tscn",
+  "hp": 10,
+  "damage": 10,
   },
  ]

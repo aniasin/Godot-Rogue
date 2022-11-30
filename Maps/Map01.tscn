@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Effects/ParallaxBackground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actors/Stations/Station.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Maps/Map01.gd" type="Script" id=4]
-[ext_resource path="res://Actors/Mobs/Asteroid.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Actors/Mobs/MobSpawner.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Maps/MapTransition.tscn" type="PackedScene" id=7]
 
@@ -14,9 +13,6 @@ script = ExtResource( 4 )
 
 [node name="Station" parent="." instance=ExtResource( 3 )]
 position = Vector2( 8, -280 )
-
-[node name="Asteroid" parent="." instance=ExtResource( 5 )]
-position = Vector2( -464, -600 )
 
 [node name="MobSpawner" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1632, -1256 )
@@ -45,3 +41,9 @@ position = Vector2( 168, 23296 )
 rotation = 3.14159
 map_destination = "res://Maps/Map02.tscn"
 transition_id = 2
+
+[node name="MobSpawner2" parent="." instance=ExtResource( 6 )]
+position = Vector2( -1312, -1496 )
+rotation = 1.56828
+encounter_name = "light_mob"
+number = 6

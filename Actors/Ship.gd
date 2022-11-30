@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 
 onready var slots = [null]
-onready var tween = $"../Interface/Tween"
+var tween
 
 export (String) var ui_window_path
 
@@ -25,6 +25,8 @@ var ship_window = null
 
 
 func _ready():
+	if $"../Interface/Tween":
+		tween = $"../Interface/Tween"
 	for item in get_children():
 		if item is Position2D:
 			slots.append(item)
@@ -114,7 +116,7 @@ func enter_station(station):
 	print(station.name)
 
 
-func thrust(velocity, direction, angle):
+func add_thrust(velocity, direction, angle):
 	thrust = velocity
 	var goal_velocity = (Vector2(engine_power, 0) * direction).rotated(GameInstance.player.rotation + angle)
 	$TweenThrust.interpolate_property(self, "thrust", thrust, goal_velocity, 1,

@@ -20,10 +20,9 @@ texture = ExtResource( 1 )
 script = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 144.0
-margin_top = 24.0
-margin_right = 365.0
-margin_bottom = 64.0
+margin_left = 136.0
+margin_right = 357.0
+margin_bottom = 40.0
 custom_fonts/font = SubResource( 2 )
 text = "Product"
 

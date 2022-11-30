@@ -27,19 +27,19 @@ func get_input():
 	if Input.is_action_pressed("left"):
 		rotation_dir -= 1
 	if Input.is_action_just_pressed("up"):
-		ship.thrust(velocity, 1, 0)
+		ship.add_thrust(velocity, 1, 0)
 	if Input.is_action_just_released("up"):
 		ship.thrust_release()
 	if Input.is_action_just_pressed("down"):
-		ship.thrust(velocity, -1, 0)
+		ship.add_thrust(velocity, -1, 0)
 	if Input.is_action_just_released("down"):
 		ship.thrust_release()
 	if Input.is_action_just_pressed("strafe_left"):
-		ship.thrust(velocity, 1, -90)
+		ship.add_thrust(velocity, 1, -90)
 	if Input.is_action_just_released("strafe_left"):
 		ship.thrust_release()
 	if Input.is_action_just_pressed("strafe_right"):
-		ship.thrust(velocity, 1, 90)
+		ship.add_thrust(velocity, 1, 90)
 	if Input.is_action_just_released("strafe_right"):
 		ship.thrust_release()
 	

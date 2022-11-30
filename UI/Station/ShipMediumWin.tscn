@@ -13,12 +13,16 @@ size = 32
 font_data = SubResource( 4 )
 
 [node name="ShipMediumWin" type="NinePatchRect"]
-margin_left = 492.0
-margin_right = 980.0
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -488.0
 margin_bottom = 773.0
 rect_min_size = Vector2( 488, 677 )
 texture = ExtResource( 2 )
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
