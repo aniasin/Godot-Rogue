@@ -20,6 +20,7 @@ var thrust = Vector2()
 
 
 var primary_guns = []
+var engines = []
 var ship_window = null
 
 
@@ -49,6 +50,8 @@ func equip_slot(slot_id, item_data):
 	slots[slot_id].add_child(item)
 	if item_data["type"] == "GUN":
 		primary_guns.append(item)
+	if item_data["type"] == "ENGINE":
+		engines.append(item)
 	if item_data["name"] == "Shield":
 		var field = load("res://Actors/ShipElements/ShieldField.tscn").instance()
 		field.power = item_data["power"]
@@ -73,6 +76,8 @@ func remove_slot(slot_id):
 	if equipped_slots.has(slot_id):
 		if slots[slot_id].get_child(0).data["type"] == "GUN":
 			primary_guns.erase(slots[slot_id].get_child(0))
+		if slots[slot_id].get_child(0).data["type"] == "ENGINE":
+			engines.erase(slots[slot_id].get_child(0))
 		slots[slot_id].get_child(0).queue_free()
 		equipped_slots.erase(slot_id)
 	update_ship()
@@ -95,32 +100,26 @@ func update_ship():
 
 func start_primary_fire():
 	for gun in primary_guns:
-		gun.start_fire()
+		gun.activate_element()
 
 
 func stop_primary_fire():
 	for gun in primary_guns:
-		gun.stop_fire()
+		gun.deactivate_element()
 
 
 func enter_station(station):
 	print(station.name)
 
 
-func thrust_up(velocity):
+func thrust(velocity, direction, angle):
 	thrust = velocity
-	var goal_velocity = (Vector2(engine_power, 0)).rotated(GameInstance.player.rotation)
+	var goal_velocity = (Vector2(engine_power, 0) * direction).rotated(GameInstance.player.rotation + angle)
 	$TweenThrust.interpolate_property(self, "thrust", thrust, goal_velocity, 1,
 	Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$TweenThrust.start()
-
-
-func thrust_down(velocity):
-	thrust = velocity
-	var goal_velocity = (Vector2(engine_power, 0) * -1).rotated(GameInstance.player.rotation)
-	$TweenThrust.interpolate_property(self, "thrust", thrust, goal_velocity, 1,
-	Tween.TRANS_LINEAR, Tween.EASE_OUT)
-	$TweenThrust.start()
+	for engine in engines:
+		engine.activate_element()
 
 
 func thrust_release():

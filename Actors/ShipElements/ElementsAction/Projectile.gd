@@ -15,7 +15,6 @@ func _ready():
 func _physics_process(delta):
 	var collision = move_and_collide(Vector2(0, -speed).rotated(rotation) * delta)
 	if collision:
-		print("Collided with ", collision.collider.name)
 		explode()
 
 
