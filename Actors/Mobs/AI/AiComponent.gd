@@ -93,7 +93,7 @@ func move():
 		mob.ship.add_thrust(mob.velocity, 1, 0)
 		is_moving = true
 		print("Moving to ", target_location)
-	elif mob.position.distance_to(target_location) <= 200:
+	elif mob.position.distance_to(target_location) <= 200 and is_moving:
 		mob.ship.add_thrust(mob.velocity, -1, 0)
 		print("Arrived at destination ", target_location)
 		target_location = null

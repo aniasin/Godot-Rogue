@@ -46,4 +46,4 @@ transition_id = 2
 position = Vector2( -1312, -1496 )
 rotation = 1.70482
 encounter_name = "light_mob"
-number = 1
+number = 6
