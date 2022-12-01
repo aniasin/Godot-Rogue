@@ -10,7 +10,7 @@ script = ExtResource( 3 )
 [node name="Camera2D" type="Camera2D" parent="."]
 rotation = -1.5708
 current = true
-zoom = Vector2( 4, 4 )
+zoom = Vector2( 2, 2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
 

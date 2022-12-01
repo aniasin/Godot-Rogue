@@ -1,10 +1,9 @@
 extends Node
 
-export (bool) var is_active = true
 export (float) var interval = 1.0
 
-onready var home_location = get_parent().position
-
+var is_active = false
+var home_location
 var mob
 var time = 0
 var last_tick = 0.0
@@ -24,6 +23,8 @@ func _process(delta):
 
 func start(actor):
 	mob = actor
+	home_location = mob.position
+	is_active = true
 
 
 func update_perception():
@@ -62,6 +63,8 @@ func patrol():
 func chase(target):
 	print("Chasing ", target)
 	mob.look_at(target.position)
+	for gun in mob.ship.primary_guns:
+		gun.get_parent().look_at(target.get_global_position())
 	mob.ship.start_primary_fire()
 
 
@@ -70,10 +73,11 @@ func stop_chase():
 	mob.ship.stop_primary_fire()
 
 
-func search(target, position):	
+func search(_target, position):
 	stop_chase()
-	print("Searching...")
-	target_location = position
+	if not target_location:
+		print("Searching...")
+		target_location = position
 	
 
 func stop_search():

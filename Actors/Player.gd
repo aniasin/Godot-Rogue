@@ -42,7 +42,9 @@ func get_input():
 		ship.add_thrust(velocity, 1, 90)
 	if Input.is_action_just_released("strafe_right"):
 		ship.thrust_release()
-	
+		
+	for gun in ship.primary_guns:
+		gun.get_parent().look_at(get_global_mouse_position())
 
 
 func _unhandled_input(event):

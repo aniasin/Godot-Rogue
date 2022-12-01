@@ -1,7 +1,7 @@
 extends RayCast2D
 
 export (int) var vision_angle = 90
-export (int) var vision_max_distance = 2000
+export (int) var vision_max_distance = 1000
 export (bool) var is_active = true
 export (float) var interval = 1.0
 

@@ -21,7 +21,7 @@ func _ready():
 	ai_component.start(self)
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	velocity = ship.thrust
 	velocity = move_and_slide(velocity)
 

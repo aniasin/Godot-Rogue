@@ -1,13 +1,10 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Actors/ShipElements/ShipElement.gd" type="Script" id=1]
+[ext_resource path="res://Assets/ships/engine.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-
-[node name="ShipElement" type="Area2D"]
+[node name="ShipElement" type="Sprite"]
+rotation = 1.57086
+texture = ExtResource( 2 )
+offset = Vector2( -0.0911719, -13.654 )
 script = ExtResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )

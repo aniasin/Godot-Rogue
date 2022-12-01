@@ -23,78 +23,91 @@ shape = SubResource( 1 )
 
 [node name="Engine1" type="Position2D" parent="."]
 position = Vector2( -25, 58 )
+rotation = 1.5708
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Engine2" type="Position2D" parent="."]
 position = Vector2( 0, 58 )
+rotation = 1.5708
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Engine3" type="Position2D" parent="."]
 position = Vector2( 25, 58 )
+rotation = 1.5708
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="ThrustLeft1" type="Position2D" parent="."]
 position = Vector2( -64.0001, -15.9998 )
+rotation = 1.5708
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="ThrustLeft2" type="Position2D" parent="."]
 position = Vector2( -63.9998, 48.0002 )
+rotation = 1.5708
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="ThrustRight1" type="Position2D" parent="."]
 position = Vector2( 63.9999, -16.0002 )
+rotation = 1.5708
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="ThrustRight2" type="Position2D" parent="."]
 position = Vector2( 64.0002, 47.9998 )
+rotation = 1.5708
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Gun1" type="Position2D" parent="."]
 position = Vector2( -27, -19 )
+rotation = 1.5708
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Gun2" type="Position2D" parent="."]
 position = Vector2( 0, -28 )
+rotation = 1.5708
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Gun3" type="Position2D" parent="."]
 position = Vector2( 28, -19 )
+rotation = 1.5708
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Utility1" type="Position2D" parent="."]
 position = Vector2( 0, 4 )
+rotation = 1.5708
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Utility2" type="Position2D" parent="."]
 position = Vector2( -26, 24 )
+rotation = 1.5708
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Utility3" type="Position2D" parent="."]
 position = Vector2( 25, 23 )
+rotation = 1.5708
 __meta__ = {
 "_edit_group_": true
 }
