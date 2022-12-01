@@ -44,6 +44,6 @@ transition_id = 2
 
 [node name="MobSpawner2" parent="." instance=ExtResource( 6 )]
 position = Vector2( -1312, -1496 )
-rotation = 1.56828
+rotation = 1.70482
 encounter_name = "light_mob"
 number = 6

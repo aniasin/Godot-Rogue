@@ -1,9 +1,9 @@
-extends Node2D
+extends Node
 
 
-func add_item(item_data):
+func add_item(_item_data):
 	pass
 
 
-func remove_item(item_data):
+func remove_item(_item_data):
 	pass
